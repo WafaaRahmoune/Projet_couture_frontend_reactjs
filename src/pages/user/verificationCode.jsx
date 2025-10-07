@@ -7,7 +7,6 @@ import axios from "axios";
 export default function Verificationcode() {
   const location = useLocation();
   const navigate = useNavigate();
-  const email = location.state?.email;
   const token = location.state?.token;
 
   const [code, setCode] = useState(["", "", "", "", "", ""]);

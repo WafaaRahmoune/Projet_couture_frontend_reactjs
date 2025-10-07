@@ -1,7 +1,7 @@
 import RegistrationSuccess from "./pages/user/Registrationsuccesstoverified";
 import RegistrationCouturiere from "./pages/user/Registrationformcouturiere";
 import ForgotPassword from "./pages/user/Forgotpassword";
-import Verificationcode from "./pages/user/Verificationcode.jsx";
+import Verificationcode from "./pages/user/Verificationcode";
 
 import PasswordSuccess from "./pages/user/PasswordSuccess";
 import ResetPassword from "./pages/user/ResetPassword";
