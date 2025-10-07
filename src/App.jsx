@@ -1,5 +1,5 @@
-import RegistrationSuccess from "./pages/user/Registration-success-to-verified";
-import RegistrationCouturiere from "./pages/user/Registration-form-couturiere";
+import RegistrationSuccess from "./pages/user/Registrationsuccesstoverified";
+import RegistrationCouturiere from "./pages/user/Registrationformcouturiere";
 import ForgotPassword from "./pages/user/Forgot-password";
 import VerificationCode from "./pages/user/VerificationCode";
 import PasswordSuccess from "./pages/user/PasswordSuccess";
