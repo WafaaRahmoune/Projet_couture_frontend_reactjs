@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Verificationcode() {
+export default function 
+Verificationcode() {
   const location = useLocation();
   const navigate = useNavigate();
   const token = location.state?.token;
