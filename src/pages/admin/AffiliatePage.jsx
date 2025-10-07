@@ -4,6 +4,7 @@ import "../../style/AdminStyle/AffiliatePage.css";
 import { FiSearch } from "react-icons/fi";
 import plusicon from "../../assets/plus.png";
 import taf3il from "../../assets/taf3il.png";
+
 import AddAffiliatePopup from '../../components/AdminComponents/AddAffiliatePopup';
 import ReworkWithAffiliate from './Reworkwithaffiliate';
 import Vide from "../../components/generalComponents/Vide";
