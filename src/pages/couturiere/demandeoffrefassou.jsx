@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SidePanel from "@/components/ui/SidePanel";
 import axios from "axios";
 import ModelCard from "@/components/ui/ModelCardCouturiere";
-import { getArabicColorLabel } from "@/utils/colorUtils";
+import { getArabicColorLabel } from "@/utils/CcolorUtils";
 import ModelCardFassou from "@/components/ui/ModelCardFassou";
 
 export default function DemandesOffresFassou() {

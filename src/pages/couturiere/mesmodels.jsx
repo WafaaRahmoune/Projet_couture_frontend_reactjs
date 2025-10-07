@@ -3,7 +3,7 @@ import SidePanel from "@/components/ui/SidePanel";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import ModelCard from "@/components/ui/ModelCardCouturiere";
-import { getArabicColorLabel } from "@/utils/colorUtils";
+import { getArabicColorLabel } from "@/utils/CcolorUtils";
 
 export default function MesModels() {
   const [models, setModels] = useState(null); // null = loading

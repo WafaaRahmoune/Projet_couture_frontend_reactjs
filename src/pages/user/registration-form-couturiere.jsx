@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { ArrowLeft, Eye, EyeOff, X, Upload } from 'lucide-react'
-import { InputField } from "@/components/ui/inputField"
+import { InputField } from "@/components/ui/InputField"
 import { PasswordField } from "@/components/ui/Passwordfield"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/Button"
+import { Checkbox } from "@/components/ui/Checkbox"
 import { Link, redirect, useNavigate } from "react-router-dom";
 import axios from "axios"
 import logo from "../../assets/logobleu.png"; // Ajout de l'import du logo

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { ArrowLeft, Eye, EyeOff, X, Upload } from 'lucide-react'
-import { InputField } from "@/components/ui/inputField" // Assuming these are custom components
+import { InputField } from "@/components/ui/InputField" // Assuming these are custom components
 import { PasswordField } from "@/components/ui/Passwordfield" // Assuming these are custom components
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/Button"
+import { Checkbox } from "@/components/ui/Checkbox"
 import { Link, redirect, useNavigate } from "react-router-dom";
 import axios from "axios"
 

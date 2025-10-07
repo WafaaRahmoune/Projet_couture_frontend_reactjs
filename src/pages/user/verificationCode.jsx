@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 

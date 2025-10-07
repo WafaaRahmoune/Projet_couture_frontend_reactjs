@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { InputField } from "@/components/ui/inputField";
+import { InputField } from "@/components/ui/InputField";
 import { PasswordField } from "@/components/ui/Passwordfield";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";

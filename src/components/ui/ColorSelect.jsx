@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { COLOR_OPTIONS, getArabicColorLabel } from "@/utils/colorUtils";
+import { COLOR_OPTIONS, getArabicColorLabel } from "@/utils/CcolorUtils";
 
 export default function ColorAutocomplete({ label, value, onChange, error }) {
   const [query, setQuery] = useState("");

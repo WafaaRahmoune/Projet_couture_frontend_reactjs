@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { InputField } from "@/components/ui/inputField";
+import { Button } from "@/components/ui/Button";
+import { InputField } from "@/components/ui/InputField";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/logobleu.png";

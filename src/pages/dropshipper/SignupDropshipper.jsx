@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from 'lucide-react';
-import { InputField } from "@/components/ui/inputfield";
+import { InputField } from "@/components/ui/InputField";
 import { PasswordField } from "@/components/ui/Passwordfield";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/Button";
+import { Checkbox } from "@/components/ui/Checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../style/authenticationStyle/RegistrationClient.css";

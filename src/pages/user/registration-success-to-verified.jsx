@@ -66,7 +66,7 @@
 // }
 import { useEffect } from "react";
 import { CheckCircle, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Link,useNavigate, useLocation } from "react-router-dom";
 
 export default function RegistrationSuccess() {

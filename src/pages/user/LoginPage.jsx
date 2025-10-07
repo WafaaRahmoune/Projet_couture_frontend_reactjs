@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from 'lucide-react';
-import { InputField } from "@/components/ui/inputField";
+import { InputField } from "@/components/ui/InputField";
 import { PasswordField } from "@/components/ui/Passwordfield";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";

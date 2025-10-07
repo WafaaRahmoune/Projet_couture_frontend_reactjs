@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom"; // Ajout de Link
 import { ArrowLeft } from "lucide-react";
 import { PasswordField } from "@/components/ui/Passwordfield";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import axios from "axios";
 
 export default function ResetPassword() {

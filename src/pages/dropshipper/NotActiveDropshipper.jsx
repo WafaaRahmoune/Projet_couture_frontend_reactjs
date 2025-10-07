@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Link, useNavigate} from "react-router-dom";
 
 export default function NotActiveDropshipper() {

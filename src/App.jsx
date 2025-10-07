@@ -1,7 +1,7 @@
-import RegistrationSuccess from "./pages/user/registration-success-to-verified";
-import RegistrationCouturiere from "./pages/user/registration-form-couturiere";
-import ForgotPassword from "./pages/user/forgot-password";
-import VerificationCode from "./pages/user/verificationCode";
+import RegistrationSuccess from "./pages/user/Registration-success-to-verified";
+import RegistrationCouturiere from "./pages/user/Registration-form-couturiere";
+import ForgotPassword from "./pages/user/Forgot-password";
+import VerificationCode from "./pages/user/VerificationCode";
 import PasswordSuccess from "./pages/user/PasswordSuccess";
 import ResetPassword from "./pages/user/ResetPassword";
 import LoginPage from "./pages/user/LoginPage";
@@ -47,16 +47,16 @@ import RefuseCouturierePage from "./pages/user/RefuseCouturierePage";
 import NotActiveCouturiere from "./pages/user/NotActiveCouturiere";
 
 // Import des pages de ta camarade
-import Policy from "./pages/couturiere/policy";
-import Demandes from "./pages/couturiere/demandes";
-import AffiliateCodePromoDashboard from "./pages/affiliate/mescodepromo";
-import MyAccount from "./pages/couturiere/moncompte";
-import AffiliateAccount from "./pages/affiliate/moncompte";
-import MesModels from "./pages/couturiere/mesmodels";
-import AddNewModel from "./pages/couturiere/addmodel";
+import Policy from "./pages/couturiere/Policy";
+import Demandes from "./pages/couturiere/Demandes";
+import AffiliateCodePromoDashboard from "./pages/affiliate/Mescodepromo";
+import MyAccount from "./pages/couturiere/Moncompte";
+import AffiliateAccount from "./pages/affiliate/Moncompte";
+import MesModels from "./pages/couturiere/Mesmodels";
+import AddNewModel from "./pages/couturiere/Addmodel";
 import StatisticsPage from "./pages/affiliate/Statistics";
-import DemandesOffresFassou from "./pages/couturiere/demandeoffrefassou";
-import PolicyAffiliate from "./pages/affiliate/policy";
+import DemandesOffresFassou from "./pages/couturiere/Demandeoffrefassou";
+import PolicyAffiliate from "./pages/affiliate/Policy";
 
 // Toast
 import { ToastContainer } from "react-toastify";

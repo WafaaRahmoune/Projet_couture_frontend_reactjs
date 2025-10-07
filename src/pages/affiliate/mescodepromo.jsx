@@ -1,6 +1,6 @@
 // pages/AffiliateDashboard.jsx
 import React, { useState, useEffect } from "react";
-import axiosInstance from "@/utils/axiosInstance"; // ✅ use our configured axios
+import axiosInstance from "@/utils/AxiosInstance"; // ✅ use our configured axios
 import { Tag, BarChart3, User } from "lucide-react";
 import SidePanel from "../../components/ui/SidePanelAffilie";
 

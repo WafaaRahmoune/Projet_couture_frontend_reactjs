@@ -1,12 +1,12 @@
 import { useState } from "react"
 import SidePanel from "@/components/ui/SidePanel"
 import { ArrowLeft, Upload, X } from "lucide-react"
-import SelectField from "@/components/ui/selectField"
-import { InputField } from "@/components/ui/inputField"
-import { Button } from "@/components/ui/button"
+import SelectField from "@/components/ui/SelectField"
+import { InputField } from "@/components/ui/InputField"
+import { Button } from "@/components/ui/Button"
 import ColorAutocomplete from "@/components/ui/ColorSelect"
-import { getAccessToken } from "@/utils/auth"   // adapte le chemin si besoin
-import { authFetch } from "@/utils/auth"
+import { getAccessToken } from "@/utils/Auth"   // adapte le chemin si besoin
+import { authFetch } from "@/utils/Auth"
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SuccessModal from "@/components/ui/SuccessModel";
