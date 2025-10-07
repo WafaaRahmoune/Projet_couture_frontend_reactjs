@@ -1,0 +1,36 @@
+
+.no-data {
+display: block;
+  
+    margin-right: auto
+}
+
+.list-container {
+    max-height: 600px;
+    /* ou la hauteur que tu veux */
+    overflow-y: auto;
+    /* active le scroll vertical uniquement si nécessaire */
+    padding-right: 8px;
+    /* optionnel pour éviter que le scroll cache du contenu */
+    scrollbar-width: thin;
+    /* pour Firefox */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-container::-webkit-scrollbar {
+    width: 6px;
+    /* largeur de la scrollbar */
+}
+
+.list-container::-webkit-scrollbar-thumb {
+    background: #aaa;
+    /* couleur du "thumb" */
+    border-radius: 3px;
+}
+
+.list-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* couleur du fond */
+
+}

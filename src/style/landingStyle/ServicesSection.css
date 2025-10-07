@@ -1,0 +1,256 @@
+.services-section {
+    direction: rtl;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    background-color: #fff;
+}
+
+.services-title {
+    font-family: 'Amiri', 'Cairo', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.services-subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Desktop View - Grid 2x2 */
+.services-grid.desktop-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 24px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: right;
+}
+
+.soustitre {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon img{
+    width: 30px;
+        height: 30px;
+}
+
+.service-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.service-list li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.service-list .bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    background-color: #f4c431;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .desktop-view {
+        display: none;
+    }
+
+    .mobile-view {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-view {
+        display: none;
+    }
+}
+
+
+
+
+
+
+/* mobile */
+/* MOBILE VIEW STYLES */
+
+.mobile-view {
+    display: block;
+    padding: 0 10px;
+}
+
+.service-accordion {
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header compact et aligné à droite */
+.accordion-header {
+
+    padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        text-align: right;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Icône ronde */
+.service-icon {
+    width: 46px;
+    height: 46px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.service-icon img {
+    width: 26px;
+    height: 26px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #222;
+}
+
+
+
+.soustitre {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Flèche ▼/▲ */
+.accordion-arrow {
+    font-size: 18px;
+    color: #555;
+    transition: transform 0.3s ease;
+    margin-top: -20px;
+}
+
+.service-accordion.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+/* Contenu déroulant */
+.accordion-content {
+    padding: 0 16px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.service-accordion.active .accordion-content {
+    max-height: 500px;
+    /* ajustable si besoin */
+    opacity: 1;
+    padding-bottom: 16px;
+}
+
+/* Liste des points */
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    text-align: right;
+}
+
+.service-list li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    direction: rtl;
+}
+
+.bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    background-color: #f4c431;
+    border-radius: 50%;
+}

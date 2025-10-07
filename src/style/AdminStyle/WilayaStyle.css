@@ -1,0 +1,242 @@
+.wilaya-field-container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    /* Largeur fixe pour tous les éléments */
+}
+
+.wilaya-error-message {
+    color: #d32f2f;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.priceinputwilayafield.error {
+    border-color: #d32f2f;
+}
+
+.validate-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.validate-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.form-error {
+    color: #d32f2f;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #ffebee;
+    border-radius: 4px;
+}
+
+/* Styles pour le conteneur de wilaya */
+.containerwilayafield {
+    border: 2px solid #78748B;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: border-color 0.2s ease;
+    background-color: #fafafa;
+    width: 100%;
+    min-width: 290px;
+    /* Prend toute la largeur du conteneur parent */
+    box-sizing: border-box;
+    /* Inclut padding et border dans la largeur */
+}
+
+.containerwilayafield:hover {
+    border-color: #3498db;
+    background-color: #f8f9fa;
+}
+
+/* Conteneur pour aligner nom et prix */
+.wilaya-field-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+}
+
+/* Conteneur pour le nom et l'icône */
+.namewithiconwilayafield {
+    font-size: 15px;
+    font-family: "Cairo";
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.namewithiconwilayafield img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Conteneur pour le champ de prix */
+.containerprice {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    width: 120px;
+    /* Largeur fixe pour la section prix */
+    flex-shrink: 0;
+    /* Empêche le rétrécissement */
+}
+
+/* Styles pour le champ de prix */
+.priceinputwilayafield {
+    width: 80px;
+    /* Largeur fixe pour le champ de prix */
+    padding: 8px 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    direction: ltr;
+    background-color: white;
+    cursor: text;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    /* Inclut padding et border dans la largeur */
+}
+
+.priceinputwilayafield:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+    background-color: #ffffff;
+}
+
+.priceinputwilayafield::placeholder {
+    color: #999;
+    font-size: 12px;
+}
+
+.priceinputwilayafield.error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+.priceinputwilayafield.error:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 6px rgba(231, 76, 60, 0.3);
+}
+
+/* Messages d'erreur */
+.price-error {
+    color: #e74c3c;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 4px;
+    padding: 2px 5px;
+    background-color: #fff5f5;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+}
+
+.currency-text {
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+    min-width: 18px;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments pour WilayaField */
+@media (max-width: 768px) {
+    .wilaya-field-container {
+        width: 100%;
+        /* Prend toute la largeur sur mobile */
+        max-width: 280px;
+        /* Mais limitée à 280px */
+    }
+
+    .containerwilayafield {
+        padding: 10px 12px;
+    }
+
+    .wilaya-field-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .namewithiconwilayafield {
+        font-size: 14px;
+    }
+
+    .containerprice {
+        width: 110px;
+        /* Légèrement réduit sur mobile */
+    }
+
+    .priceinputwilayafield {
+        width: 70px;
+        /* Légèrement réduit sur mobile */
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wilaya-field-container {
+        width: 100%;
+    }
+
+    .containerwilayafield {
+        padding: 10px;
+    }
+
+    .wilaya-field-content {
+        gap: 8px;
+    }
+
+    .namewithiconwilayafield {
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .namewithiconwilayafield img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .containerprice {
+        width: 100px;
+    }
+
+    .priceinputwilayafield {
+        width: 60px;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .currency-text {
+        font-size: 12px;
+    }
+}

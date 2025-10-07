@@ -1,0 +1,182 @@
+/* Supprimez toutes les règles liées au toast de ce fichier */
+.containerchangename {
+    padding: 32px;
+    max-width: 400px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Alignement par défaut (center) - AJOUTER CE STYLE */
+.containerchangename--center {
+    margin: auto;
+}
+
+/* Alignement au début */
+.containerchangename--start {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* Alignement à la fin */
+.containerchangename--end {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Alignement à gauche */
+.containerchangename--left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Alignement à droite */
+.containerchangename--right {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.nameheader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.nameheader h1 {
+    font-family: 'Amiri';
+    font-size: 18px;
+    color: #182544;
+    font-weight: bold;
+}
+
+.compte-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-confirmcompte {
+    width: 100%;
+    background-color: #22C55E;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 0px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Cairo';
+    font-weight: 600;
+}
+
+.btn-confirmcompte:hover:not(.disabled) {
+    background-color: #22C55E;
+}
+
+.btn-confirmcompte.disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.btn-confirmcompte.disabled:hover {
+    background-color: #bdc3c7;
+    transform: none;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+input[type="text"] {
+    direction: rtl;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 32%;
+    right: 90%;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.info {
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .containerchangename {
+        padding: 24px 20px;
+        max-width: 100%;
+    }
+
+    .nameheader h1 {
+        font-size: 16px;
+    }
+
+    .compte-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .btn-confirmcompte {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    .edit-icon {
+        bottom: 35%;
+        right: 88%;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-confirmcompte {
+        font-size: 14px;
+    }
+
+    .containerchangename {
+        padding: 20px 16px;
+    }
+}
+
+/* SUPPRIMER ces styles car ils utilisent le mauvais nom de classe */
+/*
+.containerchangepassword--start,
+.containerchangepassword--end,
+.containerchangepassword--left,
+.containerchangepassword--right {
+    // Supprimer ces styles
+}
+*/

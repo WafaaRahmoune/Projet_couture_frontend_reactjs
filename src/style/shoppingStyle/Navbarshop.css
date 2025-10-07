@@ -1,0 +1,468 @@
+/* ---- NAVBAR GÉNÉRALE ---- */
+* {
+    color: #182544;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+.navbarshop-links a {
+    color: #182544;
+    /* Couleur normale (exemple) */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbarshop-links a.active {
+    color: #E5B62B;
+    /* Jaune doré pour l'élément actif */
+    font-weight: 600;
+}
+
+/* Écrans très larges */
+@media (min-width: 1400px) {
+    .navbarshop-links {
+        gap: 120px;
+    }
+}
+
+/* ---- ANIMATION ---- */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth scrolling pour les liens d'ancrage */
+html {
+    scroll-behavior: smooth;
+}
+.containershopping{
+    background-color: #F9F8F8;
+}
+.navbarshop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl;
+    background-color: #F9F8F8;
+    padding: 15px 20px;
+    font-family: 'Cairo', sans-serif;
+    position: relative;
+    z-index: 1000;
+    
+
+    /* Centrage et limitation largeur */
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ---- LOGO ---- */
+.logo-img {
+    height:60px;
+    object-fit: contain;
+    flex-shrink: 0;
+    /* Empêche le logo de se rétrécir */
+}
+
+/* ---- MENU LINKS (desktop) ---- */
+.navbarshop-links {
+    display: flex;
+    gap: clamp(15px, 3vw, 120px);
+    /* Gap plus conservateur */
+    background-color: #fcfcfc;
+    border: 3px solid #e5e5d8;
+    padding: 12px clamp(15px, 2.5vw, 40px);
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    max-width: calc(100vw - 140px);
+    /* Réserve de l'espace pour le logo */
+    min-width: 0;
+    /* Permet la compression */
+    
+}
+
+.navbarshop-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #0c1b33;
+    font-weight: 600;
+    font-size: clamp(12px, 1.1vw, 17px);
+    /* Taille plus conservative */
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 1;
+    /* Permet une compression contrôlée */
+    min-width: 0;
+    /* Permet la compression */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Ajoute ... si nécessaire */
+}
+
+.navbarshop-links a:hover {
+    color: #E5B62B;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.faq {
+    margin-bottom: 5px;
+}
+
+/* ---- RESPONSIVE BREAKPOINTS ---- */
+
+/* Écrans larges (desktop) */
+@media (min-width: 1200px) {
+    .navbarshop {
+        padding: 20px 40px;
+        background-color: #F9F8F8;
+    }
+
+    .navbarshop-links {
+        gap: 120px;
+        padding: 12px 40px;
+    }
+
+    .navbarshop-links a {
+        font-size: 16px;
+    }
+
+    .logo-img {
+        height: 70px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1149px) {
+   
+    
+        .navbarshop-links {
+            gap: 110px;
+            padding: 10px 40px;
+        }
+    
+        .navbarshop-links a {
+            font-size: 16px;
+        }
+}
+/* Écrans moyens (tablette paysage) */
+@media (max-width: 1149px) and (min-width: 989px) {
+    .navbarshop-links {
+        gap: 90px;
+        padding: 12px 30px;
+    }
+
+    .navbarshop-links a {
+        font-size: 15px;
+    }
+}
+
+
+
+/* Écrans tablette portrait */
+@media (max-width:988px) and (min-width: 769px) {
+    .navbarshop {
+        padding: 12px 25px;
+    }
+
+    .navbarshop-links {
+        gap: 60px;
+        padding: 10px 25px;
+    }
+
+    .navbarshop-links a {
+        font-size: 15px;
+        gap: 6px;
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+@media (max-width:768px) and (min-width: 851px) {
+.navbarshop-links {
+        gap: 60px;
+        padding: 10px 25px;
+        
+    }
+}
+/* Point de basculement automatique vers mobile */
+@media (max-width: 850px) {
+    .navbashopr-links {
+        display: none !important;
+        
+    }
+
+    .menu-toggle {
+        display: flex !important;
+        
+    }
+
+    .navbarshop {
+        flex-direction: row-reverse;
+        padding: 12px 15px;
+        border-bottom: 2px solid #e5e5d8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .navbarshop-links {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 15px;
+        right: 15px;
+        width: auto;
+        background-color: #ffffff;
+        border: 2px solid #e5e5d8;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: right;
+        max-width: none;
+        
+    }
+
+    .navbarshop-links.open {
+        display: flex !important;
+        animation: slideIn 0.3s ease-in-out;
+        
+    }
+
+    .navbarshop-links a {
+        font-size: 15px;
+        padding: 8px 0;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        overflow: visible;
+        text-overflow: unset;
+        
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+    .navbarshop {
+        padding: 10px 12px;
+        
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+
+    .navbarshop-links {
+        left: 10px;
+        right: 10px;
+        padding: 15px;
+        
+    }
+
+    .navbarshop-links a {
+        font-size: 15px;
+        
+    }
+}
+
+/* Éviter les débordements sur les très petits écrans */
+@media (max-width: 320px) {
+    .navbarshop {
+        padding: 8px 10px;
+        
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .navbarshop-links a {
+        font-size: 14px;
+    }
+}
+
+/* Assurer que le contenu ne passe pas sous la navbar fixe en mobile */
+@media (max-width: 850px) {
+    body {
+        padding-top: 60px;
+        /* Ajustez selon la hauteur de votre navbar */
+        background-color: #F9F8F8;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 24px;
+        /* Ajustez selon la hauteur de votre navbar */
+        background-color: #ffffff;
+    }
+}
+
+
+
+
+/* ------------------------------------------- */
+/* 📱 NAVBAR MOBILE (max-width: 850px) */
+/* ------------------------------------------- */
+
+.mobile-navbar {
+    display: none;
+    background-color: #F9F8F8;
+    height: 0 !important;
+    
+
+}
+
+@media (max-width: 850px) {
+
+    /* Cacher la version desktop */
+    .desktop-navbar {
+        display: none !important;
+        background-color: #F9F8F8;
+    }
+
+    .mobile-navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* 🔹 Topbar avec logo à droite et "حسابي" à gauche */
+    .mobile-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px 16px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        height: 45px;
+        border-bottom: 1px solid #e5e5d8;
+        background-color: #F9F8F8;
+    }
+
+    .mobile-topbar .logo-img {
+        height: 45px;
+        width: auto;
+        object-fit: contain;
+    }
+
+        .account-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #0c1b33;
+            font-weight: bold;
+            font-size: 14px;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+    .account-link img.icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 65px;
+        background-color: #ffffff;
+        border-top: 1px solid #e5e5d8;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .bottom-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #888;
+        font-size: 12px;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .bottom-nav a .icon {
+        width: 22px;
+        height: 22px;
+        margin-bottom: 4px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .bottom-nav a:active .icon {
+        transform: scale(2);
+    }
+
+    .bottom-nav a span {
+        transition: color 0.5s ease;
+    }
+
+    
+                
+
+    .bottom-nav a.active .icon {
+        filter: brightness(1.2);
+    }
+
+    .bottom-nav a.active span {
+        color: #E5B62B;
+        font-weight: 600;
+    }
+
+    /* Hover (pour simulateurs ou tablette) */
+    .bottom-nav a:hover {
+        color: #E5B62B;
+    }
+
+    .bottom-nav a:hover .icon {
+        transform: scale(1.1);
+    }
+}
+

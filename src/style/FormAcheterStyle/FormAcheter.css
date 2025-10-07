@@ -1,0 +1,450 @@
+/* Styles de base */
+.containerformachat {
+    all: revert;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0px  10px 30px 10px;
+    box-sizing: border-box;
+}
+
+.form-header {
+    all: revert;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.form-header h2 {
+    all: revert;
+    font-family: 'Amiri', 'Cairo';
+}
+
+.form-header h1 {
+    all: revert;
+    font-family: 'Amiri', 'Cairo';
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #182544
+}
+
+.product-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 50px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.detailproductinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    border-radius: 16px;
+    background-color: #faf7f7;
+    margin-bottom: 40px;
+}
+
+.product-image {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.price-summary {
+    background-color: #f5f5f4;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.total {
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-confirm {
+    margin-top: 30px;
+    font-family: 'Cairo';
+    background-color: #E5B62B;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 16px;
+    border: none;
+    font-weight: bold;
+   
+}
+
+.btn-confirm:hover {
+    background-color: #d3a721;
+}
+
+.shop-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.retouricon {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.product-details,
+.flex-row {
+    width: 100%;
+    max-width: 500px;
+}
+
+.iconplus {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.minus {
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-confirm:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.error {
+    color: rgb(183, 69, 69);
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.errorsauterlaligne {
+    display: block;
+    width: 100%;
+}
+
+.purchase-form {
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Nouveaux styles pour la structure améliorée */
+.product-line-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-fields-group {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+    min-width: 0; /* Important pour le flex shrinking */
+}
+
+.buttons-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+/* Styles responsives pour mobile */
+@media (max-width: 767px) {
+    .retouricon {
+            position: absolute;
+            left: 15px;
+            top: 70px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    .mobile-flex-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .input-fields-group {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        min-width: 0; /* Permet aux éléments flex de réduire */
+    }
+    
+    .input-fields-group .input-field {
+        flex: 1;
+        min-width: 0; /* Important pour éviter le débordement */
+    }
+    
+    .size-input, .quantity-input {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .buttons-group {
+        flex-shrink: 0;
+        display: flex;
+        gap: 8px;
+    }
+    
+    .product-info {
+        flex-direction: row;
+        align-items: center;
+        text-align: right;
+        gap: 15px;
+        padding: 15px;
+        background-color: #faf7f7;
+        border-radius: 16px;
+    }
+    
+    .image-container {
+        width: 80px;
+        height: 80px;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    
+                .product-image {
+                    width: 60px;
+                    height: auto;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+    
+    .detailproductinfo {
+        align-items: flex-end;
+    }
+    
+    .detailproductinfo h3 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+    }
+    
+    .detailproductinfo p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .purchase-form {
+        margin: 20px 0;
+        padding: 0;
+    }
+    
+    .field-wrapper {
+        width: 100%;
+    }
+    
+    .errorsauterlaligne {
+        order: 99;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .button-group {
+        margin-top: 20px;
+    }
+    
+    .btn-confirm {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Pour les écrans très petits (moins de 380px) */
+@media (max-width: 380px) {
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-flex-container {
+        gap: 5px;
+    }
+    
+    .input-fields-group {
+        gap: 5px;
+    }
+    
+    .input-fields-group .input-field {
+        flex-basis: 48%; /* Répartition presque égale */
+    }
+    
+    .buttons-group {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .image-container {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Pour les écrans moyens (entre 381px et 480px) */
+@media (min-width: 381px) and (max-width: 480px) {
+    .input-fields-group .input-field {
+        flex-basis: 45%; /* Ajustement pour cette plage */
+    }
+        .product-image {
+            width: 80px;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+}
+
+.containershop {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.shop-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 60px 0 20px 0;
+}
+
+/* Animation */
+@keyframes earthquake {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-4px);
+    }
+    20% {
+        transform: translateX(4px);
+    }
+    30% {
+        transform: translateX(-4px);
+    }
+    40% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    60% {
+        transform: translateX(4px);
+    }
+    70% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    90% {
+        transform: translateX(-1px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: earthquake 0.5s;
+}
+
+.btn-confirm{
+    margin-bottom: 10px;
+}
+
+
+/* Styles pour le code promo */
+.discount-code-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+}
+
+.validate-discount-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 40px;
+}
+
+.validate-discount-btn:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.validate-discount-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Styles pour les prix */
+.original-price {
+    text-decoration: line-through;
+    color: #999 !important;
+}
+
+.price-row.discounted {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.success {
+    color: #27ae60;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.error {
+    color: #e74c3c;
+    margin-top: 5px;
+    font-size: 14px;
+}
+

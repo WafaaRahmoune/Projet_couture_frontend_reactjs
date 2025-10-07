@@ -1,0 +1,281 @@
+.recherche-section {
+  padding: 24px;
+  font-family: 'Cairo', sans-serif;
+  background-color: white;
+  
+}
+.containershop {
+    background-color: #F9F8F8;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    min-height: 1500px;
+}
+
+.shop-wrapper {
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 3px solid #e5e5d8;
+    padding: 25px;
+    width: 90%;
+
+    max-width: 1400px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    
+    min-height: 600px;
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 25px;
+background-color: white;
+  
+}
+.filter-bar input{
+font-family: 'Cairo';
+background-color: white;
+}
+.filter-btn {
+  padding: 12px 32px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+font-family: 'Cairo';
+}
+
+.filter-btn.active {
+  background-color: #182544;
+  color: white;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 8px 15px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  margin-right: auto;
+  min-width: 360px;
+}
+.espace{
+    width:25%;
+    background-color: white;
+}
+@media (min-width: 822px) {
+  .recherche-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+.containershop{
+  min-height: 800px;
+  
+}
+  
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 15px;
+  }
+
+  .search-input-wrapper {
+    flex: 1;
+    max-width: 500px;
+    /* limite optionnelle */
+  }
+
+  .filter-buttons-wrapper {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 950px) and (min-width: 822px) {
+  .filter-btn {
+      padding: 8px 16px;
+      margin: 2px;
+      font-weight: 400;
+    }
+  
+}
+@media (max-width: 822px) and (min-width: 787px) {
+  
+
+  .filter-btn {
+    padding: 8px 12px;
+    margin: 2px;
+    font-weight: 400;
+  }      
+  
+}
+
+
+@media (max-width: 787px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-input {
+    min-width: unset;
+    width: 90%;
+    margin-right: 0;
+  }
+
+  /* Nouveau conteneur pour les boutons */
+  .filter-buttons-wrapper {
+    display: flex;
+    
+  }
+
+  .filter-btn {
+    
+    /* 4 boutons par ligne */
+    
+    font-size: 12px;
+    text-align: center;
+    margin-left: 12px;
+    padding: 12px 18px;
+  }
+
+    /* Conteneur principal pour les boutons de filtre avec défilement */
+    .filter-buttons-scroll-container {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      /* Pour un défilement fluide sur iOS */
+      scrollbar-width: none;
+      /* Masquer la scrollbar sur Firefox */
+      margin-top: 10px;
+    }
+  
+    .filter-buttons-scroll-container::-webkit-scrollbar {
+      display: none;
+      /* Masquer la scrollbar sur Chrome, Safari et Edge */
+    }
+  
+    .filter-buttons-wrapper {
+      display: flex;
+      gap: 10px;
+      padding: 5px 0;
+      width: max-content;
+      /* Permet au conteneur de s'étendre au-delà de la largeur de l'écran */
+    }
+  
+    /* Styles existants pour les boutons de filtre */
+    .filter-btn {
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      /* Empêche le texte de se diviser sur plusieurs lignes */
+      transition: all 0.3s ease;
+    }
+  
+    .filter-btn.active {
+      background-color: #182544;
+      color: white;
+      border-color: #182544;
+    }
+  
+    /* Media query pour les écrans mobiles */
+    @media (max-width: 768px) {
+      .filter-buttons-scroll-container {
+        padding-bottom: 5px;
+        /* Espace pour indiquer qu'il y a du contenu à faire défiler */
+      }
+  
+      .filter-buttons-wrapper {
+        gap: 8px;
+        padding: 3px 15px;
+        /* Ajoute un peu d'espace sur les côtés */
+      }
+  
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+    /* Indicateur de défilement */
+.scroll-indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  opacity: 0.6;
+}
+
+.arrow {
+  font-size: 16px;
+  animation: pulse 2s infinite;
+  color: #007bff;
+}
+
+/* Animation de clignotement */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.2; }
+}
+
+/* Cacher l'indicateur sur desktop et quand il n'y a pas besoin de défilement */
+@media (min-width: 769px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+}
+
+@media (max-width: 600px) {
+  .shop-wrapper {
+    border: none;
+    border-radius: 0;
+  }
+
+    .filter-btn {
+      padding: 8px 18px;
+    }
+        
+}
+
+@media (max-width: 397px) {
+  .search-input {
+    width: 95%;
+   
+  }
+}
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 15px 8px 40px;
+  /* padding left pour l'icône */
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  font-family: 'Cairo', sans-serif;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+

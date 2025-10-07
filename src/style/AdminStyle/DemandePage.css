@@ -1,0 +1,156 @@
+.orders-container {
+    max-height: 600px;
+    /* ou la hauteur que tu veux */
+    overflow-y: auto;
+    /* active le scroll vertical uniquement si nécessaire */
+    padding-right: 8px;
+    /* optionnel pour éviter que le scroll cache du contenu */
+    scrollbar-width: thin;
+    /* pour Firefox */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.orders-container::-webkit-scrollbar {
+    width: 6px;
+    /* largeur de la scrollbar */
+}
+
+.orders-container::-webkit-scrollbar-thumb {
+    background: #aaa;
+    /* couleur du "thumb" */
+    border-radius: 3px;
+}
+
+.orders-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* couleur du fond */
+}
+
+
+
+/* Dans le fichier DemandePage.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.price-popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    direction: rtl;
+    /* Important pour la disposition en arabe */
+}
+
+.price-popup h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.popup-content {
+    margin-bottom: 20px;
+}
+
+.popup-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    font-size: 16px;
+    direction: rtl;
+    /* Pour la saisie en arabe */
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.confirm-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.confirm-btn {
+    background-color: #22C55E;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #16a34a;
+}
+
+.cancel-btn {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.cancel-btn:hover {
+    background-color: #e5e7eb;
+}
+
+/* Styles pour la barre de recherche */
+.search-bar-container {
+    margin: 20px 15px 20px 25px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-bar-input:focus {
+    outline: none;
+    border-color: black;
+    background-color: #fff;
+}
+
+.search-bar-input::placeholder {
+    color: #999;
+    text-align: right;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .search-bar-container {
+        padding: 0 10px;
+    }
+
+    .search-bar-input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}

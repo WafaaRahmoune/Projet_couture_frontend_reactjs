@@ -1,0 +1,174 @@
+.ContentPopupSorry {
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+}
+
+.Composant {
+    border: 1px solid #DADAD7;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    white-space: nowrap;
+    height: 100%;
+    padding: 20px;
+}
+
+.titlecontenu {
+    font-weight: 700;
+    font-family: 'Amiri';
+    font-size: 22px;
+    position: relative;
+    right: 0;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.contenuComposant {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.elementline {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+    text-align: right;
+}
+
+.iconcomp {
+    width: 25px;
+    height: 25px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* Styles responsives pour mobile - CORRIGÉ */
+@media screen and (max-width: 768px) {
+    .ContentPopupSorry {
+        flex-direction: column;
+        padding: 12px;
+        gap: 15px;
+    }
+
+    .Composant {
+        width: 100%;
+        white-space: normal;
+        padding: 15px;
+        margin: 0;
+    }
+
+    .titlecontenu {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .elementline {
+        white-space: normal;
+        align-items: flex-start;
+        gap: 6px;
+        /* ESPACE RÉDUIT entre icône et texte */
+        text-align: right;
+        line-height: 1.3;
+    }
+
+    .contenuComposant {
+        gap: 14px;
+        /* ESPACE RÉDUIT entre les éléments */
+    }
+
+    .iconcomp {
+        width: 22px;
+        height: 22px;
+        margin-top: 1px;
+        /* ESPACE RÉDUIT */
+    }
+}
+
+/* Pour les très petits écrans */
+@media screen and (max-width: 480px) {
+    .ContentPopupSorry {
+        padding: 10px;
+        gap: 12px;
+    }
+
+    .Composant {
+        padding: 12px;
+    }
+
+    .titlecontenu {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .elementline {
+        gap: 5px;
+        /* ESPACE ENCORE PLUS RÉDUIT */
+        font-size: 14px;
+    }
+
+    .contenuComposant {
+        gap: 12px;
+    }
+
+    .iconcomp {
+        width: 20px;
+        height: 20px;
+        margin-top: 0;
+    }
+}
+
+/* Pour les écrans extrêmement petits */
+@media screen and (max-width: 360px) {
+    .titlecontenu {
+        font-size: 15px;
+    }
+
+    .elementline {
+        font-size: 13px;
+        gap: 4px;
+    }
+
+    .iconcomp {
+        width: 18px;
+        height: 18px;
+    }
+
+    .contenuComposant {
+        gap: 10px;
+    }
+}
+
+/* Assurer que le texte ne déborde pas */
+.elementline {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Styles pour le bouton de confirmation */
+.confirmation-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: auto;
+    align-self: center;
+}
+
+@media screen and (max-width: 768px) {
+    .confirmation-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}

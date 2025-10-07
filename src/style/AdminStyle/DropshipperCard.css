@@ -1,0 +1,66 @@
+/* Styles pour DropshipperCard */
+.storeLink {
+    color: #3079FF;
+    text-decoration: underline;
+    margin-right: 5px;
+    word-break: break-all;
+}
+
+.acceptButton,
+.rejectButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 4px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    border: none;
+}
+
+.acceptButton {
+    background-color: #22C55E;
+    color: white;
+}
+
+.acceptButton:hover {
+    background-color: #16A34A;
+}
+
+.rejectButton {
+    background-color: #F94C4C;
+    color: white;
+}
+
+.rejectButton:hover {
+    background-color: #DC2626;
+}
+
+/* Styles pour les icônes dans les boutons */
+.buttonIcondropshipper {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 7px;
+   
+}
+
+/* Ajustements responsives */
+@media (max-width: 768px) {
+    .storeLink {
+        font-size: 14px;
+    }
+
+    .acceptButton,
+    .rejectButton {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .buttonIcon {
+        width: 14px;
+        height: 14px;
+    }
+}

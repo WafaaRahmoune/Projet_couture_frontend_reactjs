@@ -1,0 +1,638 @@
+/* DemandeCard.css */
+
+.CardContainer {
+    border: rgb(147, 141, 141) solid 1px;
+
+    border-radius: 16px;
+    padding: 15px 25px 15px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    min-height: 120px;
+    background: white;
+
+
+
+    border: rgb(147, 141, 141) solid 1px;
+    margin: 10px;
+    border-radius: 16px;
+    padding: 35px 25px 15px 15px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+    /* Prend tout l'écran avec margin */
+    box-sizing: border-box;
+    min-height: 120px;
+}
+
+/* Section principale gauche */
+.rightsideDemandeCard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-right: 15px;
+
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Section utilisateur */
+.userInfo {
+    gap: 30px;
+    align-items: center;
+}
+
+.userSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.usersectionforfassou {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.userName {
+    font-weight: bold;
+    font-size: 18px !important;
+    color: #2C3E50;
+    
+}
+
+.userType {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Section commande personnalisée */
+.customOrder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.customLabel {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.deadlineSection {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.deadlineIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.mydownicon {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 15px !important;
+    margin-top: 5px;
+}
+
+.deadlineText {
+    font-size: 12px;
+    color: #E74C3C;
+    font-weight: bold;
+}
+
+.deadlineAlert {
+    font-size: 14px;
+}
+
+/* Section status */
+.statusInfo {
+    justify-content: flex-start;
+}
+
+.status {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Section modèle */
+.modelInfo {
+    gap: 70px;
+}
+
+.modelSection {
+    display: flex;
+    align-items: center;
+
+}
+
+.modelName {
+    font-family: "Amiri";
+    font-weight: bold;
+    font-size: 18px !important;
+    color: #2C3E50;
+}
+
+.codeModel {
+    color: #7F8C8D;
+    font-family: "Amiri";
+    font-size: 18px !important;
+
+}
+
+/* Section localisation */
+.locationInfo {
+    gap: 15px;
+}
+
+.locationItem {
+    font-family: "Amiri";
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.locationItem span {
+    font-size: 16px;
+}
+
+.locationIcon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Section téléphone */
+.phoneSection {
+    font-family: "Amiri";
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.phoneIcon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Tableau des variantes */
+.tableCommandCard {
+    font-family: "Amiri";
+    flex: 0 0 auto;
+    width: fit-content;
+
+}
+
+.variantsTable {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 200px;
+}
+
+.variantsTable th {
+    background-color: #F8F9FA;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-bottom: 2px solid #E9ECEF;
+    text-align: center;
+    font-size: 14px;
+}
+
+.variantsTable td {
+    padding: 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid #E9ECEF;
+    vertical-align: middle;
+}
+
+.sizeCell {
+    font-weight: bold;
+    color: #2C3E50;
+}
+
+.colorInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.colorCircle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.quantityCell {
+    font-weight: bold;
+    color: rgb(45, 176, 45);
+}
+
+/* Section images */
+.leftsideDemandeCard {
+    flex: 0 0 auto;
+    width: 200px;
+}
+
+.imageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.mainImage {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #E9ECEF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productImage {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: contain;
+}
+
+.imageNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.imageNav:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.imageNav.prev {
+    left: 10px;
+}
+
+.imageNav.next {
+    right: 10px;
+}
+
+.imageIndicators {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #BDC3C7;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.indicator.active {
+    background: #3498DB;
+}
+
+.indicator:hover {
+    background: #7F8C8D;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .CardContainer {
+        padding: 12px 20px 12px 12px;
+    }
+
+    .leftsideDemandeCard {
+        width: 150px;
+    }
+
+    .mainImage {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .CardContainer {
+        padding: 15px;
+
+        width: calc(100% - 16px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .rightsideDemandeCard {
+        margin-right: 0;
+    }
+
+    .tableCommandCard {
+        margin: 0;
+        order: 2;
+    }
+
+    .leftsideDemandeCard {
+        width: 100%;
+        order: 1;
+    }
+
+    .mainImage {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .userInfo {
+        flex-direction: column;
+        align-items: stretch;
+        
+    }
+
+    .customOrder {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .CardContainer {
+        padding: 12px;
+        margin: 5px;
+        width: calc(100% - 10px);
+        gap: 12px;
+    }
+
+    .variantsTable th,
+    .variantsTable td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .mainImage {
+        width: 100px;
+        height: 100px;
+    }
+
+    .userName {
+        font-size: 14px;
+    }
+
+    .locationInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .CardContainer {
+        margin: 3px;
+        width: calc(100% - 6px);
+        padding: 10px;
+    }
+
+    .variantsTable {
+        min-width: 150px;
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .CardContainer {
+        max-width: calc(100% - 40px);
+
+    }
+
+
+    .leftsideDemandeCard {
+        width: 250px;
+    }
+
+    .mainImage {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+
+/* Add to your existing CSS */
+.statusContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.statusMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    min-width: 120px;
+    overflow: hidden;
+}
+
+.statusOption {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.statusOption:hover {
+    opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+
+
+
+.status {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+
+/* Styles pour le popup de stock */
+.stock-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.stock-popup h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.warning-text {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #fdf2f2;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+}
+
+.variants-table {
+    margin: 20px 0;
+}
+
+.variants-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.variants-table th,
+.variants-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.variants-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.min-required {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.quantity-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.confirm-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.confirm-btn:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.confirm-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+

@@ -1,0 +1,172 @@
+.investment-section {
+    
+    padding: 60px 30px;
+    border-radius: 20px;
+    margin-top: -20px;
+    
+    text-align: center;
+    
+    font-family: 'Cairo', sans-serif;
+}
+
+.investment-title {
+    font-size: 36px;
+    color: #e5b62b;
+    font-family: 'Amiri', serif;
+    margin-bottom: 15px;
+}
+.soustitre{
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 40px;
+        
+}
+.investment-description {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 40px 40px 0 40px;
+    line-height: 2;
+}
+
+.investment-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.investment-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.investment-card:hover {
+    transform: translateY(-6px);
+}
+
+.card-icon img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Amiri', serif;
+}
+
+.card-description {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+/* Action Buttons */
+
+
+.whatsapp-btn {
+    all:revert;
+    background: white;
+    color: #25d366;
+    border: 2px solid #25d366;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background: #25d366;
+    color: white;
+}
+
+.whatsapp-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+
+.containerbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        
+        
+}
+
+.whatsapp-btn{
+text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+    background: #25d366;
+    color: white;
+}
+
+.whatsapp-btn img {
+    width: 20px;
+    height: 20px;
+       
+}
+
+.whats {
+    margin-left: 350px;
+    margin-right: 350px;
+    margin-top: -20px;
+    white-space: nowrap;
+        /* ✅ Ne jamais passer à la ligne */
+        overflow: hidden;
+        /* ✅ Si jamais ça déborde, cacher */
+        text-overflow: ellipsis;
+        min-width: 400px;
+
+}
+@media (max-width: 600px) {
+    .whats {
+        min-width: 78%;
+    }
+}
+@media (max-width: 768px) {
+ .whatsapp-btn {
+    
+     padding: 12px 24px;
+     font-size: 16px;
+    
+     
+    
+ }
+ .whats{
+    
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: -20px;
+    transition: all 0.3s ease;
+    
+ }
+}
+
+@media(max-width:1200px) {
+    .containerbutton {
+        min-width: 75%;
+    }
+}

@@ -1,0 +1,42 @@
+.demandePublicationContainer {
+    margin-top: 20px;
+    max-height: 600px;
+        /* ou la hauteur que tu veux */
+        overflow-y: auto;
+    /* Ajuste la hauteur selon tes besoins */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.adminModelsScrollContainer {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    /* Pour Firefox */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.adminModelsScrollContainer::-webkit-scrollbar {
+    width: 6px;
+    /* Largeur de la scrollbar */
+}
+
+.adminModelsScrollContainer::-webkit-scrollbar-thumb {
+    background: #aaa;
+    /* Couleur du "thumb" */
+    border-radius: 3px;
+}
+
+.adminModelsScrollContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Couleur du fond */
+}
+
+.emptyState {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}

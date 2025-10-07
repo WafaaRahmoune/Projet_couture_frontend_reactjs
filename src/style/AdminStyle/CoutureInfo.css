@@ -1,0 +1,229 @@
+.CoutureCardContainer {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: white;
+    min-width: 100%;
+}
+
+.firstLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userName {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.statusGroup {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+}
+
+.status {
+    padding: 5px 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+}
+
+.status.accepted {
+    background: #22c55e;
+}
+
+.status.refused {
+    background: #ff4d4f;
+}
+
+.status.pending {
+    background: #17A2B8;
+}
+
+.status.active {
+    background: #10b981;
+}
+
+.status.inactive {
+    background: #ff4d4f;
+}
+
+.activeStatusContainer {
+    position: relative;
+}
+
+.activeStatusDropdown {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.dropdownIcon {
+    width: 15px;
+    height: 15px;
+   
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    margin-top: 5px;
+    min-width: 120px;
+}
+
+.dropdownItem {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.dropdownItem:hover {
+    background: #f5f5f5;
+}
+
+.showDetailsBtn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-size:medium;
+}
+
+.showDetailsBtn img {
+    width: 16px;
+    height: 16px;
+}
+
+.secondLine {
+    display: flex;
+    gap: 15px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 600;
+}
+
+.infoItem img {
+    width: 18px;
+    height: 18px;
+}
+
+.thirdLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.actionBtn {
+    border: none;
+    border-radius: 12px;
+    padding: 6px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+}
+
+.actionBtn.accept {
+    background: #22c55e;
+}
+
+.actionBtn.refuse {
+    background: #ff4d4f;
+}
+
+.actionBtn img {
+    width: 16px;
+    height: 16px;
+}
+
+.datedecouturiere{
+    color : #374151 !important;
+    font-size: 16px;
+    font-family: 'Amiri';
+    font-weight: 600;
+}
+
+.datecouture{
+    width: 24px !important;
+    height: 24px !important;
+    
+}
+
+/* Styles pour la section des fichiers PDF */
+.pdfFilesSection {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.pdfSectionTitle {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.pdfFilesList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pdfFileItem {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pdfFileItem:hover {
+    background-color: #e9ecef;
+}
+
+.pdfIcon {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+
+.pdfFileName {
+    font-size: 13px;
+    color: #495057;
+}

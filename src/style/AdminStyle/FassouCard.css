@@ -1,0 +1,35 @@
+
+
+
+.containerfassoucommands {
+    max-height: calc(100vh - 335px);
+    ;
+    /* ou la hauteur que tu veux */
+    overflow-y: auto;
+    /* active le scroll vertical uniquement si nécessaire */
+    padding-right: 8px;
+    /* optionnel pour éviter que le scroll cache du contenu */
+    scrollbar-width: thin;
+    /* pour Firefox */
+margin-top: 30px;
+    margin-bottom: 50px;
+
+
+}
+
+.containerfassoucommands::-webkit-scrollbar {
+    width: 6px;
+    /* largeur de la scrollbar */
+}
+
+.containerfassoucommands::-webkit-scrollbar-thumb {
+    background: #aaa;
+    /* couleur du "thumb" */
+    border-radius: 3px;
+}
+
+.containerfassoucommands::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* couleur du fond */
+
+}

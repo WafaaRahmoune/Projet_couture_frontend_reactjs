@@ -1,0 +1,357 @@
+/* ModelComp.css */
+.adminModelCardContainer {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    background: white;
+    min-width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Côté droit */
+.adminModelRightSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.adminModelLine {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Première row - Header */
+.adminModelHeader {
+    padding-bottom: 12px;
+}
+
+.adminModelSection {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.adminModelName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Amiri';
+}
+
+.adminModelStatus {
+    padding: 5px 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+}
+
+.adminImageButton {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.adminImageButton:hover {
+    background-color: #f5f5f5;
+}
+
+.adminPhotoIcon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Deuxième row - Couture Info */
+.adminModelInfo {
+    padding: 8px 0;
+}
+
+.adminCouturiereSection {
+    display: flex;
+    align-items: center;
+}
+
+.adminCouturiereName {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.adminPriceItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: black;
+    font-weight: 600;
+}
+
+.adminPriceIcon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Troisième row - Contact Info */
+.adminContactInfo {
+    padding: 8px 0;
+}
+
+.adminContactItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: black;
+    font-weight: 500;
+}
+
+.adminContactIcon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Tableau des variants */
+.adminModelTable {
+    margin-top: 16px;
+    padding-top: 16px;
+    width: fit-content;
+}
+
+.adminVariantsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.adminVariantsTable th {
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    color: #333;
+}
+
+.adminVariantsTable td {
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #555;
+}
+
+.adminSizeCell,
+.adminQuantityCell {
+    font-weight: 500;
+}
+
+.adminColorCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminColorInfo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Côté gauche - UPDATED FOR FIXED WIDTH */
+.adminModelLeftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 280px;
+    /* Fixed width instead of max-width */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+/* Section images - UPDATED FOR FIXED WIDTH IMAGE */
+.adminImageSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    /* Take full width of parent */
+}
+
+.adminMainImage {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.adminProductImage {
+    width: 100%;
+    /* Fixed width to fill container */
+    height: 100%;
+    object-fit: cover;
+    /* Maintain aspect ratio */
+    transition: transform 0.2s;
+}
+
+.adminImageNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.2s;
+}
+
+.adminImageNav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.adminImagePrev {
+    right: 10px;
+}
+
+.adminImageNext {
+    left: 10px;
+}
+
+.adminImageIndicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.adminIndicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.adminIndicator.adminActive {
+    background: #17A2B8;
+}
+
+.adminIndicator:hover {
+    background: #999;
+}
+
+/* Boutons d'action - UPDATED FOR CONSISTENT SIZE */
+.adminActionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    /* Full width of parent container */
+}
+
+.adminAcceptButton,
+.adminRejectButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center content */
+    gap: 8px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    /* Consistent padding */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+    /* Full width of container */
+    min-height: 40px;
+    /* Minimum height for consistency */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+}
+
+.adminAcceptButton {
+    background: #22c55e;
+}
+
+.adminAcceptButton:hover {
+    background: #16a34a;
+    transform: translateY(-1px);
+}
+
+.adminRejectButton {
+    background: #ef4444;
+}
+
+.adminRejectButton:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.adminActionIcon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .adminModelCardContainer {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .adminModelLeftSide {
+        width: 100%;
+        /* Full width on mobile */
+        max-width: 100%;
+    }
+
+    .adminModelLine {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .adminModelHeader,
+    .adminModelInfo,
+    .adminContactInfo {
+        align-items: flex-start;
+    }
+
+    .adminActionButtons {
+        flex-direction: row;
+        /* Side by side on mobile */
+    }
+
+    .adminAcceptButton,
+    .adminRejectButton {
+        width: auto;
+        /* Auto width on mobile */
+        flex: 1;
+        /* Equal width */
+    }
+}

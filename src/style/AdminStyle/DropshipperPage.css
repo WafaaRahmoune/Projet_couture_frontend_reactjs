@@ -1,0 +1,29 @@
+.loading,
+.error,
+.no-dropshippers {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.error {
+    color: #EF4444;
+}
+
+.loading,
+.error,
+.no-dropshippers {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.error {
+    color: #EF4444;
+}
+
+.dropshippers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

@@ -1,0 +1,57 @@
+.vide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.vide-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 400px;
+}
+
+.vide-texte {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.vide-icone {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.vide-container:hover .vide-icone {
+  opacity: 0.9;
+}
+
+/* Animation subtile */
+@keyframes subtlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.vide-icone {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+  .vide-texte {
+    font-size: 16px;
+  }
+  
+  .vide-container {
+    min-height: 250px;
+    padding: 30px 15px;
+  }
+}

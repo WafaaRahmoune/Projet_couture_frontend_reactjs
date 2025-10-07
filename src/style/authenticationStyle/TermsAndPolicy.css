@@ -1,0 +1,154 @@
+.terms-policy-container {
+    min-height: 100vh;
+background-color: #F4F3EF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.terms-policy-logo {
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.terms-policy-logo img {
+   max-width: 200px;
+}
+
+.terms-policy-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.terms-policy-card-content {
+    padding: 30px;
+}
+
+.terms-policy-back-container {
+    margin-bottom: 20px;
+    
+}
+
+.terms-policy-back-button {
+    cursor: pointer;
+    color: #3b82f6;
+    transition: color 0.2s;
+    display: block;
+    margin-left: 0;
+        /* Centre horizontalement */
+        margin-right: auto
+
+}
+
+.terms-policy-back-button:hover {
+    color: #2563eb;
+}
+
+.terms-policy-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.terms-policy-title {
+    color: #1e293b;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.terms-policy-content {
+    direction: rtl;
+    text-align: right;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.terms-policy-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.terms-policy-section:last-child {
+    border-bottom: none;
+}
+
+.terms-policy-section h3 {
+    color: #E5B62B;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.terms-policy-section p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.terms-policy-update {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Barre de défilement personnalisée */
+.terms-policy-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terms-policy-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.terms-policy-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.terms-policy-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .terms-policy-container {
+        padding: 10px;
+    }
+
+    .terms-policy-card {
+        border-radius: 12px;
+    }
+
+    .terms-policy-card-content {
+        padding: 20px;
+    }
+
+    .terms-policy-title {
+        font-size: 24px;
+    }
+
+    .terms-policy-content {
+        max-height: 65vh;
+    }
+
+    .terms-policy-section h3 {
+        font-size: 16px;
+    }
+
+    .terms-policy-section p {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,468 @@
+.input-element {
+    box-sizing: border-box;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    margin-bottom: 16px;
+}
+
+.input-field .titre {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 2px;
+    text-align: right;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    min-width: 100%;
+}
+
+.input-element::placeholder {
+    color: #B0B0B0;
+}
+.black-placeholder::placeholder {
+    color: black;
+}
+
+/* Tailles différentes */
+.full-line {
+    width: 100%;
+}
+
+.quarter-line {
+    width: 25%;
+    position: 'relative';
+    z-index: 100 !important; 
+}
+
+.input-element {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    background-image: none;
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid #B0B0B0;
+    border-radius: 14px;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Styles spécifiques pour le select */
+.select-element {
+    cursor: pointer;
+    /* Ajouter une flèche personnalisée pour le select */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B0B0B0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");    background-repeat: no-repeat;
+    background-position: left 12px center;
+    background-size: 16px;
+    padding-left: 50px;
+    padding-right: 12px ;
+}
+
+/* États hover et focus */
+.input-element:hover {
+    border-color: #888;
+}
+
+.input-element:focus {
+    border-color: #000000;
+    border: 2px solid black;
+}
+
+.select-element:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Style pour le select quand aucune valeur n'est sélectionnée (placeholder) */
+.select-element:invalid,
+.select-element[value=""] {
+    color: #B0B0B0 !important;
+}
+
+/* Style pour le placeholder (option disabled) */
+.optioncss {
+    color: #B0B0B0 !important;
+    font-style:normal;
+    display: none;
+    /* Cache l'option dans la liste déroulante */
+}
+.placeholder-noir{
+    color: black !important;
+        opacity: 1;
+}
+/* Styles pour les options normales */
+.select-element option {
+    color: #333 !important;
+    background-color: #fff !important;
+    padding: 8px 12px;
+}
+
+/* Option sélectionnée */
+.select-element option:checked {
+    background-color: #000000 !important;
+    color: #fff !important;
+}
+
+/* Pour forcer le style du placeholder sur tous les navigateurs */
+.select-element option[value=""]:first-child {
+    color: #B0B0B0 !important;
+}
+
+/* Quand une vraie valeur est sélectionnée, retour à la couleur normale */
+.select-element:not(:invalid):not([value=""]) {
+    color: #333 !important;
+    font-style: normal !important;
+}
+
+/* État désactivé */
+.input-element:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.select-element:disabled {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Pour les navigateurs qui supportent la couleur des options */
+.select-element option[disabled] {
+    color: #B0B0B0 !important;
+}
+
+/* Animation lors de l'ouverture du select */
+.select-element {
+    transition: all 0.2s ease-in-out;
+}
+
+.error-border {
+    border: 2px solid #d65252 !important;
+
+}
+
+.upload-zone {
+    border: 2px dashed #999;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.upload-zone:hover {
+    background-color: #f0f0f0;
+}
+
+.upload-icon {
+    all:revert;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.caché{
+    display: none;
+}
+
+.upload-zone.uploaded {
+    border-color: #4caf50;
+    background-color: #eafaf1;
+    position: relative;
+    box-shadow: 0 0 0 2px #4caf50 inset;
+}
+
+/* Ajoute un petit check "visuel" en haut à droite, sans modifier le DOM */
+.upload-zone.uploaded::after {
+    content: '✔';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles pour l'upload multiple de fichiers */
+.uploaded-files-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+   
+}
+
+.files-title {
+    margin-top: -30px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color:#4caf50;
+    text-align: right;
+}
+
+.files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    direction: ltr;
+    /* Pour l'affichage des noms de fichiers */
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.file-name {
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.file-size {
+    font-size: 10px;
+    color: #888;
+}
+
+.remove-file-btn {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.remove-file-btn:hover {
+    background-color: #ffecee;
+}
+
+.upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    gap: 12px;
+    /* espace entre la zone et la liste des fichiers */
+}
+
+.upload-zone {
+    
+    /* garde toujours une taille fixe */
+    display: block;
+        
+    
+}
+.upload-zone:hover {
+    border-color: #4caf50;
+    background-color: #f0fff0;
+}
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+select.input-element {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select.input-element option {
+width: 50%;
+}
+
+
+/* Styles pour le menu de sélection personnalisé */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select-trigger {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    background-image: none;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #B0B0B0;
+    border-radius: 14px;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+    outline: none;
+    cursor: pointer;
+    direction: rtl;
+    position: relative;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.custom-select-trigger.placeholder-style {
+    color: #B0B0B0;
+}
+
+.custom-select-trigger:after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #B0B0B0;
+    transition: transform 0.3s ease;
+}
+
+.custom-select-trigger.menu-open:after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.custom-select-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #B0B0B0;
+    border-radius: 14px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    text-align: right;
+    direction: rtl;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.custom-select-option:last-child {
+    border-bottom: none;
+}
+
+.custom-select-option:hover {
+    background-color: #f5f5f5;
+}
+
+.custom-select-option.selected {
+    background-color: #000000;
+    color: white;
+}
+
+/* Animation pour l'ouverture du menu */
+.custom-select-menu {
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pour s'assurer que le menu personnalisé a la même apparence que les autres inputs */
+.custom-select-trigger.error-border {
+    border: 2px solid #d65252 !important;
+}
+
+/* Style cohérent avec le reste de l'application */
+.input-element {
+    box-sizing: border-box;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    margin-bottom: 16px;
+}
+
+.input-field .titre {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 2px;
+    text-align: right;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    min-width: 100%;
+}
+
+/* Le reste de votre CSS existant reste inchangé */
