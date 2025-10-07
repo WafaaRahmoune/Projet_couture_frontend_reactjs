@@ -1,6 +1,6 @@
 import RegistrationSuccess from "./pages/user/Registrationsuccesstoverified";
 import RegistrationCouturiere from "./pages/user/Registrationformcouturiere";
-import ForgotPassword from "./pages/user/Forgot-password";
+import ForgotPassword from "./pages/user/Forgotpassword";
 import VerificationCode from "./pages/user/VerificationCode";
 import PasswordSuccess from "./pages/user/PasswordSuccess";
 import ResetPassword from "./pages/user/ResetPassword";
