@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck } from "lucide-react";
+// import { ShieldCheck } from "lucide-react";
 
 export default function Policy() {
   return (
@@ -10,7 +10,7 @@ export default function Policy() {
         <h1 className="text-xl sm:text-2xl font-bold text-[#374151]">
           سياسة الاستخدام للخياطة
         </h1>
-        <ShieldCheck className="text-[#F0C84B]" size={22} />
+        {/* <ShieldCheck className="text-[#F0C84B]" size={22} /> */}
       </div>
   
       {/* Contenu */}
@@ -140,7 +140,7 @@ export default function Policy() {
         آخر تحديث: 2025
       </div>
     </div>
-  );
+  )
   
 
 }
