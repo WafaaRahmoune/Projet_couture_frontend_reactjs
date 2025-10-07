@@ -47,7 +47,7 @@ import RefuseCouturierePage from "./pages/user/RefuseCouturierePage";
 import NotActiveCouturiere from "./pages/user/NotActiveCouturiere";
 
 // Import des pages de ta camarade
-import Policy from "./pages/couturiere/Policy";
+import PolicyCouturiere from "./pages/couturiere/Policy.jsx";
 import Demandes from "./pages/couturiere/Demandes";
 import AffiliateCodePromoDashboard from "./pages/affiliate/Mescodepromo";
 import MyAccount from "./pages/couturiere/Moncompte";
@@ -92,7 +92,7 @@ export default function App() {
           <Route path="/registration-couturiere-refused" element={<RefuseCouturierePage/>} />
 
           {/* Routes publiques de ta camarade */}
-          <Route path="/Policy" element={<Policy />} />
+          <Route path="/Policy" element={<PolicyCouturiere />} />
           <Route path="/affiliate/policy" element={<PolicyAffiliate />} />
           <Route path="/verification" element={<Verificationcode />} />
 
