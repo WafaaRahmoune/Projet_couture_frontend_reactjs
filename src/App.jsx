@@ -79,7 +79,7 @@ export default function App() {
           <Route path="/registerclient" element={<RegistrationClient />} />
           <Route path="/signup" element={<RegistrationCouturiere />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/verification" element={<VerificationCode />} />
+          <Route path="/verification" element={<Verificationcode />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/password-success" element={<PasswordSuccess />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
