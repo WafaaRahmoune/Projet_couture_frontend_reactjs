@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { InputField } from "@/components/ui/inputField";
-import { PasswordField } from "@/components/ui/passwordfield";
+import { PasswordField } from "@/components/ui/Passwordfield";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../style/authenticationStyle/LoginClient.css";

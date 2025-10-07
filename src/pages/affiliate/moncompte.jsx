@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { InputField } from "@/components/ui/inputField"
-import { PasswordField } from "@/components/ui/passwordField"
+import { PasswordField } from "@/components/ui/Passwordfield"
 import { Button } from "@/components/ui/button"
 import { Pencil } from "lucide-react"
 import SidePanel from "@/components/ui/SidePanelAffilie"

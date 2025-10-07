@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { ArrowLeft, Eye, EyeOff, X, Upload } from 'lucide-react'
 import { InputField } from "@/components/ui/inputField"
-import { PasswordField } from "@/components/ui/passwordfield"
+import { PasswordField } from "@/components/ui/Passwordfield"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Link, redirect, useNavigate } from "react-router-dom";
