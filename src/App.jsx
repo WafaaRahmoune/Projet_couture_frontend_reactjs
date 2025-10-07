@@ -1,7 +1,6 @@
 import RegistrationSuccess from "./pages/user/Registrationsuccesstoverified";
 import RegistrationCouturiere from "./pages/user/Registrationformcouturiere";
 import ForgotPassword from "./pages/user/Forgotpassword";
-import Verificationcode from "./pages/user/Verificationcode";
 
 import PasswordSuccess from "./pages/user/PasswordSuccess";
 import ResetPassword from "./pages/user/ResetPassword";
@@ -63,6 +62,7 @@ import PolicyAffiliate from "./pages/affiliate/Policy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedWrapper from "./components/ProtectedWrapper";
+import Verificationcode from "./pages/user/Verificationcode";
 
 export default function App() {
   return (
@@ -79,7 +79,6 @@ export default function App() {
           <Route path="/registerclient" element={<RegistrationClient />} />
           <Route path="/signup" element={<RegistrationCouturiere />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/verification" element={<Verificationcode />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/password-success" element={<PasswordSuccess />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
@@ -95,6 +94,8 @@ export default function App() {
           {/* Routes publiques de ta camarade */}
           <Route path="/Policy" element={<Policy />} />
           <Route path="/affiliate/policy" element={<PolicyAffiliate />} />
+          <Route path="/verification" element={<Verificationcode />} />
+
 
           {/* Routes protégées pour clients */}
           <Route path="/shopping" element={
