@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function VerificationCode() {
+export default function Verificationcode() {
   const location = useLocation();
   const navigate = useNavigate();
   const email = location.state?.email;
