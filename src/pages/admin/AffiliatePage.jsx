@@ -5,7 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import plusicon from "../../assets/plus.png";
 import taf3il from "../../assets/taf3il.png";
 import AddAffiliatePopup from '../../components/AdminComponents/AddAffiliatePopup';
-import ReworkWithAffiliate from '../../pages/admin/ReworkWithAffiliate';
+import ReworkWithAffiliate from './Reworkwithaffiliate';
 import Vide from "../../components/generalComponents/Vide";
 import useErreur401Handler from '../../components/generalComponents/Erreur401Handle'
 
