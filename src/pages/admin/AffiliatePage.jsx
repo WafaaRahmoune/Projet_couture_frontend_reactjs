@@ -4,7 +4,7 @@ import "../../style/AdminStyle/AffiliatePage.css";
 import { FiSearch } from "react-icons/fi";
 import plusicon from "../../assets/plus.png";
 import taf3il from "../../assets/taf3il.png";
-import ReworkWithAffiliate from './pages/admin/ReworkWithAffiliate';
+import ReworkWithAffiliate from '../../pages/admin/ReworkWithAffiliate';
 import Vide from "../../components/generalComponents/Vide";
 import useErreur401Handler from '../../components/generalComponents/Erreur401Handle'
 
