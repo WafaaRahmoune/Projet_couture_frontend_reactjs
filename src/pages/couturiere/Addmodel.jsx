@@ -181,7 +181,7 @@ export default function AddNewModel() {
       }
 
       // Requête API (avec token JWT si nécessaire)
-      const response = await authFetch("http://127.0.0.1:8000/api/addmodel/", {
+      const response = await authFetch("https://api.kadi-inv.store/api/addmodel/", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`, // ✅ ton token JWT
