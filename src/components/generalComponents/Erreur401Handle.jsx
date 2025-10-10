@@ -27,7 +27,7 @@ const useErreur401Handler = () => {
     if (refreshToken) {
       try {
         // Faire la requête de refresh
-        const response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+        const response = await fetch('https://api.kadi-inv.store/api/token/refresh/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
