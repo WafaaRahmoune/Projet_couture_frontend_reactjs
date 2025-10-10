@@ -356,7 +356,7 @@ const transformApiDataToCardFormat = (apiOrders) => {
         modelname: order.fashion_model?.name || "غير محدد",
         price: totalPrice,
         variants: variants,
-        images: order.fashion_model?.images ? order.fashion_model.images.map(img => `http://127.0.0.1:8000${img}`) : [],
+        images: order.fashion_model?.images ? order.fashion_model.images.map(img => `https://api.kadi-inv.store${img}`) : [],
         profit_percentage: order.promocode?.profit_percentage ?? null
       };
     } 
@@ -367,7 +367,7 @@ const transformApiDataToCardFormat = (apiOrders) => {
  
   
   order.images.forEach(img => {
-    const imageUrl = `http://127.0.0.1:8000${img}`;
+    const imageUrl = `https://api.kadi-inv.store${img}`;
     if (imageUrl.toLowerCase().endsWith('.pdf')) {
       pdfFiles.push({
         name: imageUrl.split('/').pop(),
@@ -641,7 +641,7 @@ export default function DemandePage() {
         setLoading(true);
         const accessToken = localStorage.getItem("accessToken");
         
-        const response = await fetch('http://127.0.0.1:8000/adminapi/ordersClientsDropshippers/', {
+        const response = await fetch('https://api.kadi-inv.store/adminapi/ordersClientsDropshippers/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -677,7 +677,7 @@ if (response.status === 401) {
       const accessToken = localStorage.getItem("accessToken");
       const commandType = currentOrderType === "custom" ? "custom" : "standard";
       
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/refusecommand/${commandType}/${currentCommandCode}/`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/refusecommand/${commandType}/${currentCommandCode}/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -743,7 +743,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
       const accessToken = localStorage.getItem("accessToken");
       
       const response = await fetch(
-        `http://127.0.0.1:8000/adminapi/MakeCustomCommandDone/${commandCode}/`, 
+        `https://api.kadi-inv.store/adminapi/MakeCustomCommandDone/${commandCode}/`, 
         {
           method: 'PATCH',
           headers: {
@@ -797,7 +797,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
           }));
 
         const verifyResponse = await fetch(
-          `http://127.0.0.1:8000/adminapi/VerifiyIfVariantModelgreaterthanOrEqualToVariantQuantity/${modelCode}/`,
+          `https://api.kadi-inv.store/adminapi/VerifiyIfVariantModelgreaterthanOrEqualToVariantQuantity/${modelCode}/`,
           {
             method: 'POST',
             headers: {
@@ -842,7 +842,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
       
       // Si le stock est suffisant ou si la commande n'est pas en attente, appeler l'API pour marquer comme "done"
       const doneResponse = await fetch(
-        `http://127.0.0.1:8000/adminapi/MakeStandardCommandDone/${modelCode}/${commandCode}/`,
+        `https://api.kadi-inv.store/adminapi/MakeStandardCommandDone/${modelCode}/${commandCode}/`,
         {
           method: 'PATCH',
           headers: {
@@ -901,7 +901,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
         }));
 
       const verifyResponse = await fetch(
-        `http://127.0.0.1:8000/adminapi/VerifiyIfVariantModelgreaterthanOrEqualToVariantQuantity/${modelCode}/`,
+        `https://api.kadi-inv.store/adminapi/VerifiyIfVariantModelgreaterthanOrEqualToVariantQuantity/${modelCode}/`,
         {
           method: 'POST',
           headers: {
@@ -929,7 +929,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
     setTargetStatus("قيد التنفيذ"); // ← AJOUTEZ CETTE LIGNE
     setShowStockPopup(true);
 
-        const updateResponse = await fetch(`http://127.0.0.1:8000/adminapi/inprogressCommandstandard/${commandCode}/`, {
+        const updateResponse = await fetch(`https://api.kadi-inv.store/adminapi/inprogressCommandstandard/${commandCode}/`, {
           method: 'PATCH',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -980,7 +980,7 @@ const handlePriceConfirm = async (price, email, setApiErrors) => { // NOUVEAU: a
       let response;
       
       if (newStatus === "قيد التنفيذ") {
-        response = await fetch(`http://127.0.0.1:8000/adminapi/inprogressCommandcustom/${currentCommandCode}/${price}/`, {
+        response = await fetch(`https://api.kadi-inv.store/adminapi/inprogressCommandcustom/${currentCommandCode}/${price}/`, {
           method: 'PATCH',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -1030,7 +1030,7 @@ const handlePriceConfirm = async (price, email, setApiErrors) => { // NOUVEAU: a
         
         // Garder l'ancienne logique pour "مكتملة"
         response = await fetch(
-          `http://127.0.0.1:8000/adminapi/MakeCustomCommandDone/${currentCommandCode}/`, 
+          `https://api.kadi-inv.store/adminapi/MakeCustomCommandDone/${currentCommandCode}/`, 
           {
             method: 'PATCH',
             headers: {
@@ -1117,7 +1117,7 @@ const handleStockAdd = async (stockAdditions) => {
     
     // Ajouter les variantes au stock
     const addResponse = await fetch(
-      `http://127.0.0.1:8000/adminapi/modifyModelToBeAbleToMakeTheOrderOfClient/${currentModelCode}/`,
+      `https://api.kadi-inv.store/adminapi/modifyModelToBeAbleToMakeTheOrderOfClient/${currentModelCode}/`,
       {
         method: 'PATCH',
         headers: {
@@ -1136,7 +1136,7 @@ const handleStockAdd = async (stockAdditions) => {
 
     // Appeler la deuxième API
     const changeModelResponse = await fetch(
-      `http://127.0.0.1:8000/adminapi/chnageModelFromNotVisibleToAccepted/${currentModelCode}/`,
+      `https://api.kadi-inv.store/adminapi/chnageModelFromNotVisibleToAccepted/${currentModelCode}/`,
       {
         method: 'PATCH',
         headers: {
@@ -1154,7 +1154,7 @@ const handleStockAdd = async (stockAdditions) => {
     let updateResponse;
     if (targetStatus === "مكتملة") {
       updateResponse = await fetch(
-        `http://127.0.0.1:8000/adminapi/MakeStandardCommandDone/${currentModelCode}/${currentCommandCode}/`,
+        `https://api.kadi-inv.store/adminapi/MakeStandardCommandDone/${currentModelCode}/${currentCommandCode}/`,
         {
           method: 'PATCH',
           headers: {
@@ -1164,7 +1164,7 @@ const handleStockAdd = async (stockAdditions) => {
         }
       );
     } else {
-      updateResponse = await fetch(`http://127.0.0.1:8000/adminapi/inprogressCommandstandard/${currentCommandCode}/`, {
+      updateResponse = await fetch(`https://api.kadi-inv.store/adminapi/inprogressCommandstandard/${currentCommandCode}/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
