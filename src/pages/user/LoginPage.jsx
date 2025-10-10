@@ -188,7 +188,7 @@ const handleSuccessfulLogin = (userRole) => {
     setErrors({ email: "", password: "", general: "" });
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/token/", formData, {
+      const response = await axios.post("https://api.kadi-inv.store/api/token/", formData, {
         headers: { 'Content-Type': 'application/json' },
         timeout: 10000,
       });
