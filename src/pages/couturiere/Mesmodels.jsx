@@ -14,7 +14,7 @@ export default function MesModels() {
       try {
         setError(null);
         const token = localStorage.getItem("accessToken"); // JWT
-        const res = await axios.get("http://127.0.0.1:8000/api/mesmodels/", {
+        const res = await axios.get("https://api.kadi-inv.store/api/mesmodels/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
