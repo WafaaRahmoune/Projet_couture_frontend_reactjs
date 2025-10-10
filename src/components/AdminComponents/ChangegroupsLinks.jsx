@@ -218,7 +218,7 @@ ChangegroupsLinks({ path = "", align = "center" }) {
  
 
 
-  const result = await fetch('http://127.0.0.1:8000/adminapi/updatesociallinks/', {
+  const result = await fetch('https://api.kadi-inv.store/adminapi/updatesociallinks/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
