@@ -98,7 +98,7 @@ function Dashboard() {
       
      
       
-      const response = await fetch("http://127.0.0.1:8000/adminapi/GetMostActiveCouturiere", {
+      const response = await fetch("https://api.kadi-inv.store/adminapi/GetMostActiveCouturiere", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -160,7 +160,7 @@ function Dashboard() {
       
      
       
-      const response = await fetch("http://127.0.0.1:8000/adminapi/getmostActifAffilier", {
+      const response = await fetch("https://api.kadi-inv.store/adminapi/getmostActifAffilier", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
