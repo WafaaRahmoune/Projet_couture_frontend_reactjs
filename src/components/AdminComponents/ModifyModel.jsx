@@ -294,7 +294,7 @@ export default function ModifyModelPopup({ isOpen, onClose, onSuccess, currentMo
       const token = localStorage.getItem('accessToken');
       
 
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/${originalModelCode}/delete/`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/${originalModelCode}/delete/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -428,7 +428,7 @@ export default function ModifyModelPopup({ isOpen, onClose, onSuccess, currentMo
 
      
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/addNewModelByAdmin/', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/addNewModelByAdmin/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
