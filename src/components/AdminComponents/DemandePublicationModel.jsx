@@ -21,7 +21,7 @@ export default function DemandePublicationModel() {
       setError(null);
       
       const response = await axios.patch(
-        "http://127.0.0.1:8000/adminapi/getInfoModelCouturiereWaitingToBePublished",
+        "https://api.kadi-inv.store/adminapi/getInfoModelCouturiereWaitingToBePublished",
         {},
         {
           headers: {
