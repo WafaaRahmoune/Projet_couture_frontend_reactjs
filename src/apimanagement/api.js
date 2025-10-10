@@ -3,7 +3,7 @@ import axios from 'axios';
 import { showReconnectPopup } from './PopupManager';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000',
+  baseURL: 'https://api.kadi-inv.store',
 });
 
 // Interceptor pour ajouter le token SEULEMENT si requis
