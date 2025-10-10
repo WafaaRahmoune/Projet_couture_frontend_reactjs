@@ -85,7 +85,7 @@ const formatDeadline = (dateString) => {
 
       const token = localStorage.getItem("accessToken");
       const response =await axios.patch(
-        `http://127.0.0.1:8000/api/ModifyFassouOffer/${id}/`, // ✅ use offer id
+        `https://api.kadi-inv.store/api/ModifyFassouOffer/${id}/`, // ✅ use offer id
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
