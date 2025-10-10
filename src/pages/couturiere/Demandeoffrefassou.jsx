@@ -14,8 +14,8 @@ export default function DemandesOffresFassou() {
   // usage dans ton composant
   
   const urls = {
-    demandes: "http://127.0.0.1:8000/api/MesDemandesFassou/",
-    offres: "http://127.0.0.1:8000/api/offresFassou/",
+    demandes: "https://api.kadi-inv.store/api/MesDemandesFassou/",
+    offres: "https://api.kadi-inv.store/api/offresFassou/",
   };
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function DemandesOffresFassou() {
           type={m.model_type}
           description={m.description}
           status={m.state}
-  images={m.custom_images.map(img => `http://127.0.0.1:8000${img.image}`)}
+  images={m.custom_images.map(img => `https://api.kadi-inv.store${img.image}`)}
 
           // images={m.custom_images}
           sizes={m.variants.map((v) => ({
@@ -127,7 +127,7 @@ export default function DemandesOffresFassou() {
           description={m.description}
           status={m.state}
           // images={m.custom_images}
-            images={m.custom_images.map(img => `http://127.0.0.1:8000${img.image}`)}
+            images={m.custom_images.map(img => `https://api.kadi-inv.store${img.image}`)}
 
           sizes={m.variants.map((v) => ({
             size: v.size,
