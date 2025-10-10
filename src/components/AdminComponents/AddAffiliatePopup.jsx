@@ -397,7 +397,7 @@ function AddAffiliatePopup({ isOpen, onClose, onSuccess }) {
         model_codes: form.selectedModels
       };
 console.log("Données à envoyer:", requestData);
-      const response = await fetch('http://127.0.0.1:8000/adminapi/addNewAffilier/', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/addNewAffilier/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
