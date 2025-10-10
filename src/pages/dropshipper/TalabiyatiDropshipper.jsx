@@ -43,7 +43,7 @@ const navigate =useNavigate()
 
     const token = localStorage.getItem("accessToken");
       
-     const response = await fetch(`http://127.0.0.1:8000/clientapi/allorders`, {
+     const response = await fetch(`https://api.kadi-inv.store/clientapi/allorders`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -98,7 +98,7 @@ const data = await response.json();
 
  const transformApiData = (apiData) => {
   const transformedCommandes = [];
-  const API_BASE_URL = "http://127.0.0.1:8000";
+  const API_BASE_URL = "https://api.kadi-inv.store";
 
   // Traiter les commandes standard
   if (apiData.standard_orders && apiData.standard_orders.length > 0) {
