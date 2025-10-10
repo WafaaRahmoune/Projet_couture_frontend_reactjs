@@ -357,7 +357,7 @@ function PostModelCouturiere({ isOpen, onClose, modelData, onSuccess }) {
       console.log(key, value);
     }
 
-    const response = await fetch('http://127.0.0.1:8000/adminapi/accept-model/', {
+    const response = await fetch('https://api.kadi-inv.store/adminapi/accept-model/', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
