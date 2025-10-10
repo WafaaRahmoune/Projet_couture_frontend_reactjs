@@ -259,7 +259,7 @@ function ModelSpecialPage() {
 const token = localStorage.getItem("accessToken");
   
 
-    const response = await fetch(`http://127.0.0.1:8000/clientapi/specialcommand/`, {
+    const response = await fetch(`https://api.kadi-inv.store/clientapi/specialcommand/`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
