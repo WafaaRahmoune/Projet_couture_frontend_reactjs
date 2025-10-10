@@ -151,7 +151,7 @@ export default function ListCouturieres({ filter = "all" }) {
       );
 
       // Appel API pour mettre à jour le statut
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/updateCouturiereStatus/${couturiereForAction.id}/`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/updateCouturiereStatus/${couturiereForAction.id}/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -224,7 +224,7 @@ export default function ListCouturieres({ filter = "all" }) {
       );
 
       // Appel API pour mettre à jour le statut actif
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/updateCouturiereActiveStatus/${id}/`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/updateCouturiereActiveStatus/${id}/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
