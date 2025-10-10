@@ -56,7 +56,7 @@ export default function Verificationcode() {
     const otp = code.join("");
 
     try {
-      const res = await axios.post("http://localhost:8000/api/verify-otp/", {
+      const res = await axios.post("https://api.kadi-inv.store/api/verify-otp/", {
         token,
         otp,
       });
