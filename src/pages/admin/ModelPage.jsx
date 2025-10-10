@@ -35,7 +35,7 @@ function ModelPage() {
   const fetchModelsData = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await fetch('http://127.0.0.1:8000/clientapi/models/all', {
+      const response = await fetch('https://api.kadi-inv.store/clientapi/models/all', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ function ModelPage() {
   const checkIfModelCanBeModified = async (modelCode) => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/veriifyifweareabletomodifyamodel/${modelCode}`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/veriifyifweareabletomodifyamodel/${modelCode}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
