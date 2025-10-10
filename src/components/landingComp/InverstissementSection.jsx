@@ -7,7 +7,7 @@ export default function InverstissementSection() {
   const [whatsappLink, setWhatsappLink] = useState("https://chat.whatsapp.com/GHvAxP5Jb5sFNQHqaoRgsw?mode=ac_t");
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/clientapi/sociallinks/")
+    axios.get("https://api.kadi-inv.store/clientapi/sociallinks/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           const apiData = res.data[0];
