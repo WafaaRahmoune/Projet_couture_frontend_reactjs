@@ -55,7 +55,7 @@ export default function ForgotPassword() {
 
     setIsSending(true);
     try {
-      const res = await axios.post("http://localhost:8000/api/forgot-password/", {
+      const res = await axios.post("https://api.kadi-inv.store/api/forgot-password/", {
         email: formData.email,
       });
 
