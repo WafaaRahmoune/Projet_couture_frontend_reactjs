@@ -9,10 +9,10 @@ const categories = ["الكل", "نساء", "رجال", "أطفال"];
 
 // URLs API selon la catégorie
 const apiUrls = {
-  "الكل": "http://127.0.0.1:8000/clientapi/models/all",
-  "نساء": "http://127.0.0.1:8000/clientapi/models/femmes/",
-  "رجال": "http://127.0.0.1:8000/clientapi/models/hommes/",
-  "أطفال": "http://127.0.0.1:8000/clientapi/models/enfants/",
+  "الكل": "https://api.kadi-inv.store/clientapi/models/all",
+  "نساء": "https://api.kadi-inv.store/clientapi/models/femmes/",
+  "رجال": "https://api.kadi-inv.store/clientapi/models/hommes/",
+  "أطفال": "https://api.kadi-inv.store/clientapi/models/enfants/",
 };
 
 export default function Recherchefilter() {
