@@ -22,7 +22,7 @@ export default function Commandlafassou() {
       
       
 
-      const response = await fetch("http://127.0.0.1:8000/adminapi/getInfoCommandeFassou", {
+      const response = await fetch("https://api.kadi-inv.store/adminapi/getInfoCommandeFassou", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
