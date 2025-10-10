@@ -32,7 +32,7 @@ export default function ListCouturieres({ filter = "all" }) {
       
      
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/listCouturieres', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/listCouturieres', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
