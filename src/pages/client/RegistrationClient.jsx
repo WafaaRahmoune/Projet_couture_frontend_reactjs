@@ -56,7 +56,7 @@ export default function RegistrationClient() {
     setEmailChecking(true);
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/checkIfEmailExist/${encodeURIComponent(email)}`
+        `https://api.kadi-inv.store/api/checkIfEmailExist/${encodeURIComponent(email)}`
       );
       
       console.log("Réponse API vérification email:", response.data);
@@ -228,7 +228,7 @@ export default function RegistrationClient() {
     
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/resend-verification/",
+        "https://api.kadi-inv.store/api/resend-verification/",
         {
           email: formData.email.trim().toLowerCase(),
         },
@@ -321,7 +321,7 @@ export default function RegistrationClient() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/clientapi/signup/",
+        "https://api.kadi-inv.store/clientapi/signup/",
         {
           email: formData.email,
           full_name: formData.fullName,
