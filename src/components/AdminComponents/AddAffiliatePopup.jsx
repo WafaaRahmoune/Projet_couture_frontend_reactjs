@@ -72,7 +72,7 @@ function AddAffiliatePopup({ isOpen, onClose, onSuccess }) {
     try {
       const token = localStorage.getItem('accessToken');
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/getmodelsnotaffectedtopromocode', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/getmodelsnotaffectedtopromocode', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -110,7 +110,7 @@ function AddAffiliatePopup({ isOpen, onClose, onSuccess }) {
       const token = localStorage.getItem('accessToken');
      
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/generate-promo-code', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/generate-promo-code', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
