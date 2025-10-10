@@ -88,7 +88,7 @@ export default function DemandePublicationModel() {
       
       // Appel à l'API pour refuser le modèle
       const response = await axios.patch(
-        `http://127.0.0.1:8000/adminapi/RefuseModelCouturiere/${codemodel}/`,
+        `https://api.kadi-inv.store/adminapi/RefuseModelCouturiere/${codemodel}/`,
         {},
         {
           headers: {
