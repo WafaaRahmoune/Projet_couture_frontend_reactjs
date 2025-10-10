@@ -5,7 +5,7 @@ export async function getAccessToken() {
   const refresh = localStorage.getItem("refreshToken")
 
   if (!access && refresh) {
-    const res = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
+    const res = await fetch("https://api.kadi-inv.store/api/token/refresh/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh }),
@@ -46,13 +46,13 @@ export async function checkInitialAuth() {
 
   try {
     // 🔍 Verify access token validity
-    await axios.post("http://127.0.0.1:8000/api/token/verify/", { token: accessToken });
+    await axios.post("https://api.kadi-inv.store/api/token/verify/", { token: accessToken });
     return true;
   } catch {
     if (refreshToken) {
       try {
         // 🔄 Try to refresh access token
-        const res = await axios.post("http://127.0.0.1:8000/api/token/refresh/", {
+        const res = await axios.post("https://api.kadi-inv.store/api/token/refresh/", {
           refresh: refreshToken,
         });
         localStorage.setItem("accessToken", res.data.access);
