@@ -34,7 +34,7 @@ setIsResending(true)
 setResendError("")
 
 try {
-    await axios.post("http://127.0.0.1:8000/api/resend-verification/", {
+    await axios.post("https://api.kadi-inv.store/api/resend-verification/", {
     email: email.trim().toLowerCase()
     }, {
     headers: { "Content-Type": "application/json" },
