@@ -56,7 +56,7 @@ function ParametresLivraison() {
 
       try {
         setLoading(true);
-        const response = await fetch("http://127.0.0.1:8000/adminapi/getallwilayaswithprices", {
+        const response = await fetch("https://api.kadi-inv.store/adminapi/getallwilayaswithprices", {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -154,7 +154,7 @@ function ParametresLivraison() {
         delivery_price: wilaya.price.toString()
       }));
 
-      const response = await fetch("http://127.0.0.1:8000/adminapi/wilayas/updateprixlivraison/", {
+      const response = await fetch("https://api.kadi-inv.store/adminapi/wilayas/updateprixlivraison/", {
         method: "POST",
         headers: {
           'Authorization': `Bearer ${token}`,
