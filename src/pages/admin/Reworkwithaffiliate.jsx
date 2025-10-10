@@ -63,7 +63,7 @@ function ReworkWithAffiliate({ isOpen, onClose, affiliate , onSuccess}) {
       const token = localStorage.getItem('accessToken');
       
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/getmodelsnotaffectedtopromocode', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/getmodelsnotaffectedtopromocode', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -103,7 +103,7 @@ function ReworkWithAffiliate({ isOpen, onClose, affiliate , onSuccess}) {
       const token = localStorage.getItem('accessToken');
       
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/generate-promo-code', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/generate-promo-code', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -305,7 +305,7 @@ function ReworkWithAffiliate({ isOpen, onClose, affiliate , onSuccess}) {
         model_codes: form.selectedModels
       };
 
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/reworkwithaffiliate/${affiliate.email}`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/reworkwithaffiliate/${affiliate.email}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
