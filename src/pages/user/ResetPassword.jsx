@@ -55,7 +55,7 @@ export default function ResetPassword() {
     }
 
     try {
-      await axios.post("http://localhost:8000/api/reset-password/", {
+      await axios.post("https://api.kadi-inv.store/api/reset-password/", {
         reset_token,
         new_password: password.trim(),
       });
