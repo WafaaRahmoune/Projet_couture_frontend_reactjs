@@ -94,7 +94,7 @@ export default function Commandlafassou() {
       // Déterminer l'URL de l'API en fonction du nouveau statut
       let apiUrl = "";
       if (newStatus === "cancelled") {
-        apiUrl = `http://127.0.0.1:8000/adminapi/makefassouCommandrefused/${codeorder}/`;
+        apiUrl = `https://api.kadi-inv.store/adminapi/makefassouCommandrefused/${codeorder}/`;
       } else if (newStatus === "done") {
         apiUrl = `http://127.0.0.1:8000/adminapi/makefassouCommandCompleted/${codeorder}/`;
       } else {
