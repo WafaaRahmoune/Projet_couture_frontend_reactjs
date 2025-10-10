@@ -14,7 +14,7 @@ export default function Demandes() {
       try {
         setError(null);
         const token = localStorage.getItem("accessToken"); // JWT
-        const res = await axios.get("http://127.0.0.1:8000/api/mesDemandesPersonalise/", {
+        const res = await axios.get("https://api.kadi-inv.store/api/mesDemandesPersonalise/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -74,7 +74,7 @@ export default function Demandes() {
           description={m.description}
           status={m.state}
 
-            images={m.custom_images.map(img => `http://127.0.0.1:8000${img.image}`)}
+            images={m.custom_images.map(img => `https://api.kadi-inv.store${img.image}`)}
           sizes={m.variants.map((v) => ({
             size: v.size,
             color: getArabicColorLabel(v.color),
