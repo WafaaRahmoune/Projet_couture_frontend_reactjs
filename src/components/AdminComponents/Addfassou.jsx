@@ -265,7 +265,7 @@ export default function Addfassou({ isOpen, onClose, onSuccess }) {
       }
 
       // Utiliser l'API pour créer une commande fassou
-      const response = await fetch('http://127.0.0.1:8000/adminapi/createCommandefassou/', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/createCommandefassou/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
