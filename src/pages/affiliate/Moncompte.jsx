@@ -35,7 +35,7 @@ export default function MonCompte() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("accessToken") // JWT
-        const res = await fetch("http://127.0.0.1:8000/api/profile/affiliate/", {
+        const res = await fetch("https://api.kadi-inv.store/api/profile/affiliate/", {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!res.ok) throw new Error("Failed to fetch profile")
@@ -151,7 +151,7 @@ return error
     try {
       setLoading(true)
       const token = localStorage.getItem("accessToken") // JWT
-      const res = await fetch("http://127.0.0.1:8000/api/profile/affiliate/", {
+      const res = await fetch("https://api.kadi-inv.store/api/profile/affiliate/", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +186,7 @@ return error
     try {
       setLoading(true)
       const token = localStorage.getItem("accessToken")
-      const res = await fetch("http://127.0.0.1:8000/api/changepasswordWithVerification/affiliate", {
+      const res = await fetch("https://api.kadi-inv.store/api/changepasswordWithVerification/affiliate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
