@@ -169,7 +169,7 @@ try {
 
     const token = localStorage.getItem("accessToken");
     try {
-      const response = await fetch(`http://127.0.0.1:8000/clientapi/delivery-price/?wilaya_name=${encodeURIComponent(wilayaName)}`, {
+      const response = await fetch(`https://api.kadi-inv.store/clientapi/delivery-price/?wilaya_name=${encodeURIComponent(wilayaName)}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -248,7 +248,7 @@ const submitOrder = async () => {
   const token = localStorage.getItem("accessToken");
   
   try {
-    const response = await fetch(`http://127.0.0.1:8000/clientapi/achetermodel/`, {
+    const response = await fetch(`https://api.kadi-inv.store/clientapi/achetermodel/`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
