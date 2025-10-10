@@ -80,7 +80,7 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
 
   const checkDropshipperStatus = async (email) => {
     try {
-      const response = await fetch(`http:8000/api/checkStatusDropshipper/${email}/`, {
+      const response = await fetch(`https://api.kadi-inv.store/api/checkStatusDropshipper/${email}/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
