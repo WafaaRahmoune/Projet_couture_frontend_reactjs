@@ -19,7 +19,7 @@ export default function DropshippingSection() {
   const [whatsappLink, setWhatsappLink] = useState("https://chat.whatsapp.com/GHvAxP5Jb5sFNQHqaoRgsw?mode=ac_t");
 const navigate =useNavigate()
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/clientapi/sociallinks/")
+    axios.get("https://api.kadi-inv.store/clientapi/sociallinks/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           const apiData = res.data[0];
