@@ -47,7 +47,7 @@ api.interceptors.response.use(
           return Promise.reject(new Error('No refresh token, redirecting to login'));
         }
 
-        const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
+        const response = await axios.post('https://api.kadi-inv.store/api/token/refresh/', {
           refresh: refreshToken
         });
 
