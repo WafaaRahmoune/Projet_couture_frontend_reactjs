@@ -165,7 +165,7 @@ const getAvailableSizesForColor = (color) => {
 
   
   try {
-    const response = await fetch(`http://127.0.0.1:8000/clientapi/delivery-price/?wilaya_name=${encodeURIComponent(wilayaName)}`, {
+    const response = await fetch(`https://api.kadi-inv.store/clientapi/delivery-price/?wilaya_name=${encodeURIComponent(wilayaName)}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -197,7 +197,7 @@ const getAvailableSizesForColor = (color) => {
 
 
  try {
-    const response = await fetch(`http://127.0.0.1:8000/clientapi/validatecodepromo/${code.trim()}/${modelCode}`, {
+    const response = await fetch(`https://api.kadi-inv.store/clientapi/validatecodepromo/${code.trim()}/${modelCode}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -276,7 +276,7 @@ const getAvailableSizesForColor = (color) => {
     const token = localStorage.getItem("accessToken");
   
   try {
-    const response = await fetch(`http://127.0.0.1:8000/clientapi/achetermodel/`, {
+    const response = await fetch(`https://api.kadi-inv.store/clientapi/achetermodel/`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
