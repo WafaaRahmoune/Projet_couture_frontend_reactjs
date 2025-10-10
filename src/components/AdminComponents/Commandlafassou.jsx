@@ -96,7 +96,7 @@ export default function Commandlafassou() {
       if (newStatus === "cancelled") {
         apiUrl = `https://api.kadi-inv.store/adminapi/makefassouCommandrefused/${codeorder}/`;
       } else if (newStatus === "done") {
-        apiUrl = `http://127.0.0.1:8000/adminapi/makefassouCommandCompleted/${codeorder}/`;
+        apiUrl = `https://api.kadi-inv.store/adminapi/makefassouCommandCompleted/${codeorder}/`;
       } else {
         console.error("Statut non supporté:", newStatus);
         return false;
