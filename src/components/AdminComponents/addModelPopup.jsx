@@ -287,7 +287,7 @@ export default function AddModelPopup({ isOpen, onClose, onSuccess }) {
         }
       }
 
-      const response = await fetch('http://127.0.0.1:8000/adminapi/addNewModelByAdmin/', {
+      const response = await fetch('https://api.kadi-inv.store/adminapi/addNewModelByAdmin/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
