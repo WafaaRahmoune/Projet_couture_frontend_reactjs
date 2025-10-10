@@ -81,7 +81,7 @@ const fetchProducts = async (category) => {
 const fetchTopDemandProducts = async () => {
   setLoading(true);
   try {
-    const data = await authenticatedFetch("http://127.0.0.1:8000/dropshipper/top-demandingmodels");
+    const data = await authenticatedFetch("https://api.kadi-inv.store/dropshipper/top-demandingmodels");
     
     if (data.count > 0) {
       // Adapter les données au format attendu par ProductCard
@@ -112,7 +112,7 @@ const fetchTopDemandProducts = async () => {
   // Fonction pour charger les données de popularité
   const fetchTopDemandData = async () => {
     try {
-      const data = await authenticatedFetch("http://127.0.0.1:8000/dropshipper/top-demandingmodels");
+      const data = await authenticatedFetch("https://api.kadi-inv.store/dropshipper/top-demandingmodels");
       setTopDemandData(data);
     } catch (error) {
       console.error("Erreur lors du fetch des données de popularité :", error);
