@@ -35,7 +35,7 @@ function DropshipperPage() {
       
      
       
-      const response = await fetch("http://127.0.0.1:8000/adminapi/getAllDropshippers", {
+      const response = await fetch("https://api.kadi-inv.store/adminapi/getAllDropshippers", {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
@@ -91,7 +91,7 @@ function DropshipperPage() {
         return;
       }
       
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/acceptdropshipper/${email}`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/acceptdropshipper/${email}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -130,7 +130,7 @@ const handleRefuseDropshipper = async (email) => {
     }
     
     console.log("Envoi de la requête à l'API...");
-    const response = await fetch(`http://127.0.0.1:8000/adminapi/refusedropshipper/${email}`, {
+    const response = await fetch(`https://api.kadi-inv.store/adminapi/refusedropshipper/${email}`, {
       method: "PATCH",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -173,7 +173,7 @@ const handleRefuseDropshipper = async (email) => {
         return;
       }
       
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/activatecomptedropshipper/${email}`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/activatecomptedropshipper/${email}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -206,7 +206,7 @@ const handleRefuseDropshipper = async (email) => {
       const token = localStorage.getItem("accessToken"); // Changé de adminToken à accessToken
       
       
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/desactivatecomptedropshipper/${email}`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/desactivatecomptedropshipper/${email}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
