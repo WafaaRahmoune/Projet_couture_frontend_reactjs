@@ -99,7 +99,7 @@ export default function ModelComp({
     setShowRejectPopup(false); // Fermer la popup
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/adminapi/RefuseModelCouturiere/${modelId}/`, {
+      const response = await fetch(`https://api.kadi-inv.store/adminapi/RefuseModelCouturiere/${modelId}/`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
