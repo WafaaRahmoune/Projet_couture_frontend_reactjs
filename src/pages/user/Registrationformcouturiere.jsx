@@ -240,7 +240,7 @@ export default function RegistrationCouturiere() {
     try {
       console.log("Envoi de la requête de renvoi pour:", formData.email)
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/resend-verification/",
+        "https://api.kadi-inv.store/api/resend-verification/",
         {
           email: formData.email.trim().toLowerCase(),
         },
@@ -349,7 +349,7 @@ export default function RegistrationCouturiere() {
         data.append(`documents[${index}]`, file)
       })
 
-      const response = await axios.post("http://127.0.0.1:8000/api/signup-couturiere/", data, {
+      const response = await axios.post("https://api.kadi-inv.store/api/signup-couturiere/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
