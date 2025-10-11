@@ -47,7 +47,7 @@ function Dashboard() {
         return;
       }
       
-      const response = await fetch("https://api.kadi-inv.store/adminapi/most-demanded-models", {
+      const response = await fetch("api.kadi-inv.store/login/adminapi/most-demanded-models", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
