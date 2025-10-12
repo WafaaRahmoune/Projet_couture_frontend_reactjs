@@ -116,15 +116,15 @@ export default function App() {
             </ProtectedRoute>
           } />
           
-          <Route path="/compte" element={
+         <Route path="/compte" element={
             <ProtectedRoute requiredUserType="client">
               <CompteclientPage />
             </ProtectedRoute>
           } />
 
-          <Route path="/compte" element={
-            <ProtectedRoute requiredUserType="client">
-              <CompteclientPage />
+          <Route path="/comptedrophipper" element={
+            <ProtectedRoute requiredUserType="dropshipper">
+              <CompteDropshipperPage />
             </ProtectedRoute>
           } />
 
