@@ -32,7 +32,7 @@ function ProtectedWrapper({ children }) {
           "/password-success", "/rules", "/rulesdropshipper",
           "/admin/login", "/SignupDropshipper", "/RegistrationSucess",
           "/RefuseDropshipperPage", "/registration-couturiere-refused",
-          "/NotActiveDropshipper", "/NotActiveCouturiere"
+          "/NotActiveDropshipper", "/NotActiveCouturiere","/registerclient"
         ];
         
         if (!publicRoutes.includes(location.pathname)) {
