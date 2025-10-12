@@ -70,7 +70,9 @@ const publicEndpoints = [
   "/login",
   "/signup",
   "/forgot-password",
-  "/landing"
+  "/landing",
+   "/registerclient",
+  "/SignupDropshipper"
 ];
 
 const axiosInstance = axios.create({
