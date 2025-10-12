@@ -82,7 +82,7 @@ export default function FooterSection() {
           <h3 className="footer-title">تواصل معنا</h3>
           <p>البريد الإلكتروني :</p>
           <p>{contactInfo.email}</p>
-          <p>الهاتف : {contactInfo.phone}</p>
+          <p>الهاتف : <br/>{contactInfo.phone}</p>
           <p>مواقع التواصل :</p>
           <div className="footer-social">
             {socialLinks.map((link) => (

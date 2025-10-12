@@ -13,14 +13,46 @@ export default function SignupDropshipper() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirm] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    phone:"",
-    confirmPassword: "",
-    storeLink: ""
-  });
+  
+  // Fonction pour charger les données depuis localStorage
+  const loadFormDataFromStorage = () => {
+    try {
+      const savedData = localStorage.getItem('dropshipperRegistrationFormData');
+      if (savedData) {
+        return JSON.parse(savedData);
+      }
+    } catch (error) {
+      console.error("Erreur lors du chargement des données:", error);
+    }
+    return {
+      fullName: "",
+      email: "",
+      password: "",
+      phone: "",
+      confirmPassword: "",
+      storeLink: ""
+    };
+  };
+
+  // Fonction pour sauvegarder les données dans localStorage
+  const saveFormDataToStorage = (data) => {
+    try {
+      localStorage.setItem('dropshipperRegistrationFormData', JSON.stringify(data));
+    } catch (error) {
+      console.error("Erreur lors de la sauvegarde des données:", error);
+    }
+  };
+
+  // Fonction pour effacer les données sauvegardées
+  const clearStoredFormData = () => {
+    try {
+      localStorage.removeItem('dropshipperRegistrationFormData');
+    } catch (error) {
+      console.error("Erreur lors de la suppression des données:", error);
+    }
+  };
+
+  const [formData, setFormData] = useState(loadFormDataFromStorage());
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,6 +70,23 @@ export default function SignupDropshipper() {
       document.body.style.overflow = "auto";
     };
   }, []);
+
+  // Sauvegarder les données à chaque modification
+  useEffect(() => {
+    saveFormDataToStorage(formData);
+  }, [formData]);
+
+  // Effacer les données sauvegardées lorsque le composant est démonté ou après soumission réussie
+  useEffect(() => {
+    return () => {
+      // Ne pas effacer si la soumission a réussi
+      if (!submitSuccess) {
+        // Vous pouvez choisir de garder les données ou de les effacer
+        // Pour garder les données, commentez la ligne suivante
+        // clearStoredFormData();
+      }
+    };
+  }, [submitSuccess]);
 
   const [emailChecking, setEmailChecking] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
@@ -103,17 +152,18 @@ export default function SignupDropshipper() {
         }
         break;
 
-        case "phone":
-  const digitsOnly = value.replace(/\D/g, '');
-  
-  if (!value.trim()) {
-    error = "رقم الهاتف مطلوب";
-  } else if (digitsOnly.length !== 10) {
-    error = "يجب أن يحتوي رقم الهاتف على 10 أرقام بالضبط";
-  } else if (!/^(05|06|07)/.test(digitsOnly)) {
-    error = "رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07";
-  }
-  break;
+      case "phone":
+        const digitsOnly = value.replace(/\D/g, '');
+        
+        if (!value.trim()) {
+          error = "رقم الهاتف مطلوب";
+        } else if (digitsOnly.length !== 10) {
+          error = "يجب أن يحتوي رقم الهاتف على 10 أرقام بالضبط";
+        } else if (!/^(05|06|07)/.test(digitsOnly)) {
+          error = "رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07";
+        }
+        break;
+        
       case "email":
         const hasArabicChars = /[\u0600-\u06FF]/.test(value);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -125,6 +175,7 @@ export default function SignupDropshipper() {
           error = "البريد الإلكتروني يجب أن يكون بالأحرف اللاتينية فقط";
         }
         break;
+        
       case "password":
         const hasArabicCharsPassword = /[\u0600-\u06FF]/.test(value);
         if (!value) {
@@ -139,6 +190,7 @@ export default function SignupDropshipper() {
           error = "كلمة المرور لا يجب أن تكون نفس البريد الإلكتروني";
         }
         break;
+        
       case "confirmPassword":
         if (!value) {
           error = "تأكيد كلمة المرور مطلوب";
@@ -146,6 +198,7 @@ export default function SignupDropshipper() {
           error = "كلمات المرور غير متطابقة";
         }
         break;
+        
       case "storeLink":
         if (!value.trim()) {
           error = "رابط المتجر مطلوب";
@@ -221,7 +274,7 @@ export default function SignupDropshipper() {
   };
 
   const isFormValid = () => {
-    const requiredFields = ["fullName", "email", "password", "confirmPassword", "storeLink"];
+    const requiredFields = ["fullName", "email", "password", "confirmPassword", "storeLink", "phone"];
     const allFieldsFilled = requiredFields.every((field) => formData[field].trim() !== "");
     const hasActiveErrors = Object.values(errors).some(hasError);
     const termsAccepted = acceptTerms;
@@ -326,7 +379,7 @@ export default function SignupDropshipper() {
       return;
     }
 
-    const fieldsToValidate = ["fullName", "email", "password", "confirmPassword", "storeLink","phone"];
+    const fieldsToValidate = ["fullName", "email", "password", "confirmPassword", "storeLink", "phone"];
     let currentErrors = {};
 
     fieldsToValidate.forEach((field) => {
@@ -374,6 +427,9 @@ export default function SignupDropshipper() {
       setResendCount(0);
       setLastResendTime(null);
       setErrors({});
+      
+      // Effacer les données sauvegardées après une soumission réussie
+      clearStoredFormData();
 
     } catch (error) {
       console.error("Erreur détaillée:", error);
@@ -410,6 +466,12 @@ export default function SignupDropshipper() {
     }
   };
 
+  // Fonction pour gérer la navigation vers les conditions
+  const handleTermsNavigation = () => {
+    // Les données sont automatiquement sauvegardées grâce au useEffect
+    // L'utilisateur peut naviguer en toute sécurité
+  };
+
   return (
     <div className="registration-container">
       <div className="registration-logo">
@@ -444,8 +506,6 @@ export default function SignupDropshipper() {
                 loading={emailChecking}
               />
               
-             
-              
               <PasswordField
                 label="كلمة المرور:"
                 placeholder="ادخل كلمة المرور"
@@ -467,13 +527,14 @@ export default function SignupDropshipper() {
               />
 
               <InputField
-  label="رقم الهاتف:"
-  placeholder="05XXXXXXXX أو 06XXXXXXXX أو 07XXXXXXXX"
-  value={formData.phone}
-  onChange={(val) => handleInputChange("phone", val)}
-  error={errors.phone}
-/>
-               <InputField
+                label="رقم الهاتف:"
+                placeholder="05XXXXXXXX أو 06XXXXXXXX أو 07XXXXXXXX"
+                value={formData.phone}
+                onChange={(val) => handleInputChange("phone", val)}
+                error={errors.phone}
+              />
+               
+              <InputField
                 label="رابط المتجر:"
                 placeholder="https://example.com"
                 value={formData.storeLink}
@@ -499,7 +560,7 @@ export default function SignupDropshipper() {
               />
               <label className="registration-terms-label">
                 أوافق على <span className="registration-terms-link">
-                  <Link to="/rulesdropshipper">شروط الاستخدام وسياسة الخصوصية</Link>
+                  <Link to="/rulesdropshipper" onClick={handleTermsNavigation}>شروط الاستخدام وسياسة الخصوصية</Link>
                 </span>
               </label>
             </div>

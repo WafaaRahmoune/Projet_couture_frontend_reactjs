@@ -103,9 +103,37 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
     navigate("/special");
   };
 
-  const goToCompte = () => {
-    navigate("/compte");
-  };
+ const goToCompte = () => {
+  const userData = localStorage.getItem('user');
+  if (userData) {
+    try {
+      const user = JSON.parse(userData);
+      
+      if (user.role === "dropshipper") {
+        // Vérifier le statut du dropshipper avant de rediriger
+        checkDropshipperStatus(user.email)
+          .then(status => {
+            if (status === "notactif") {
+              navigate("/NotActiveDropshipper");
+            } else {
+              navigate("/comptedrophipper");
+            }
+          })
+          .catch(error => {
+            console.error("Erreur lors de la vérification du statut:", error);
+            navigate("/comptedrophipper");
+          });
+      } else {
+        navigate("/compte");
+      }
+    } catch (error) {
+      console.error("Erreur lors du parsing des données utilisateur:", error);
+      navigate("/compte"); // Redirection par défaut en cas d'erreur
+    }
+  } else {
+    navigate("/compte"); // Redirection par défaut si pas d'utilisateur
+  }
+};
 
   const goToMycommands = () => {
     const userData = localStorage.getItem('user');

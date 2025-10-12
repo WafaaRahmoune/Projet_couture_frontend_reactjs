@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from 'lucide-react';
-import { InputField } from "@/components/ui/InputField";
-import { PasswordField } from "@/components/ui/Passwordfield";
-import { Button } from "@/components/ui/Button";
-import { Checkbox } from "@/components/ui/Checkbox";
+import { InputField } from "@/components/ui/inputfield";
+import { PasswordField } from "@/components/ui/passwordfield";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../style/authenticationStyle/RegistrationClient.css";
@@ -13,13 +13,44 @@ export default function RegistrationClient() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirm] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    
-    password: "",
-    confirmPassword: "",
-  });
+  
+  // Fonction pour charger les données depuis localStorage
+  const loadFormDataFromStorage = () => {
+    try {
+      const savedData = localStorage.getItem('registrationFormData');
+      if (savedData) {
+        return JSON.parse(savedData);
+      }
+    } catch (error) {
+      console.error("Erreur lors du chargement des données:", error);
+    }
+    return {
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
+  };
+
+  // Fonction pour sauvegarder les données dans localStorage
+  const saveFormDataToStorage = (data) => {
+    try {
+      localStorage.setItem('registrationFormData', JSON.stringify(data));
+    } catch (error) {
+      console.error("Erreur lors de la sauvegarde des données:", error);
+    }
+  };
+
+  // Fonction pour effacer les données sauvegardées
+  const clearStoredFormData = () => {
+    try {
+      localStorage.removeItem('registrationFormData');
+    } catch (error) {
+      console.error("Erreur lors de la suppression des données:", error);
+    }
+  };
+
+  const [formData, setFormData] = useState(loadFormDataFromStorage());
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,6 +68,23 @@ export default function RegistrationClient() {
       document.body.style.overflow = "auto";
     };
   }, []);
+
+  // Sauvegarder les données à chaque modification
+  useEffect(() => {
+    saveFormDataToStorage(formData);
+  }, [formData]);
+
+  // Effacer les données sauvegardées lorsque le composant est démonté ou après soumission réussie
+  useEffect(() => {
+    return () => {
+      // Ne pas effacer si la soumission a réussi
+      if (!submitSuccess) {
+        // Vous pouvez choisir de garder les données ou de les effacer
+        // Pour garder les données, commentez la ligne suivante
+        // clearStoredFormData();
+      }
+    };
+  }, [submitSuccess]);
 
   const [emailChecking, setEmailChecking] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
@@ -340,6 +388,9 @@ export default function RegistrationClient() {
       setResendCount(0);
       setLastResendTime(null);
       setErrors({});
+      
+      // Effacer les données sauvegardées après une soumission réussie
+      clearStoredFormData();
 
     } catch (error) {
       console.error("Erreur détaillée:", error);
@@ -372,6 +423,12 @@ export default function RegistrationClient() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Fonction pour gérer la navigation vers les conditions
+  const handleTermsNavigation = () => {
+    // Les données sont automatiquement sauvegardées grâce au useEffect
+    // L'utilisateur peut naviguer en toute sécurité
   };
 
   return (
@@ -446,7 +503,7 @@ export default function RegistrationClient() {
               />
               <label className="registration-terms-label">
                 أوافق على <span className="registration-terms-link">
-                  <Link to="/rules">شروط الاستخدام وسياسة الخصوصية</Link>
+                  <Link to="/rules" onClick={handleTermsNavigation}>شروط الاستخدام وسياسة الخصوصية</Link>
                 </span>
               </label>
             </div>

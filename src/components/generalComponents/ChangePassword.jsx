@@ -137,7 +137,7 @@ export default function ChangePassword({path="", align = "center"} ) {
         // Gérer les erreurs spécifiques de l'API
         if (data.password) {
           setApiError(data.password[0]);
-        } else if (data.newPassword) {
+        } else if (data.new) {
           setErrors(prev => ({ ...prev, newPass: data.newPassword[0] }));
         } else {
           setApiError(data.message || "حدث خطأ أثناء تغيير كلمة المرور");
