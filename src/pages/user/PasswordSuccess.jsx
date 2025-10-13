@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import {Link ,useNavigate} from "react-router-dom";
 export default function PasswordSuccess() {
   const handleBackToLogin = () => {
@@ -18,7 +18,7 @@ export default function PasswordSuccess() {
     <div className="fixed inset-0 bg-[#F4F3EF] flex flex-col items-center justify-start px-4 pt-8 pb-4">
       {/* Header */}
       <div className="relative w-full max-w-md flex justify-center items-center mb-4">
-        <h2 className="text-[#E5B62B] text-2xl text-center amiri-bold">
+        <h2 className="text-[#E5B62B] text-l sm:text-2xl text-center amiri-bold">
           تم حفظ كلمة المرور بنجاح
         </h2>
         <ArrowLeft
@@ -29,7 +29,7 @@ export default function PasswordSuccess() {
           <img
             src="/logo.png"
             alt="Logo"
-            className="w-[8rem] max-w-full h-auto object-contain"
+            className=" max-w-full h-auto object-contain w-[6rem] sm:w-[8rem] "
           />
         </div>
       </div>
