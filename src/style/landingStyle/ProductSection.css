@@ -239,8 +239,8 @@ body {
     }
 
     .shopping-product-card {
-        width: 250px;
-        min-width: 200px;
+        width: 200px;
+        min-width: 250px;
     }
 
     .shopping-product-img-container {
