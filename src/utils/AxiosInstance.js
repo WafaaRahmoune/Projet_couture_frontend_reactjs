@@ -76,7 +76,7 @@ const publicEndpoints = [
 ];
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.kadi-inv.store",
+  baseURL: "https://api.kadi-inv.store/api",
   headers: { "Content-Type": "application/json" },
 });
 
