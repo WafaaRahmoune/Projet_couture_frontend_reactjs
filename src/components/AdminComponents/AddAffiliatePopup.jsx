@@ -495,7 +495,7 @@ if (response.status === 401) {
                 name="email"
                 size="oneline"
                 down={false}
-                value={form.email}
+                value={form.email.toLowerCase()}
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 hasError={isSubmitted && !!errors.email}
               />
