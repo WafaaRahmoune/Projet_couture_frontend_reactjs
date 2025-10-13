@@ -336,7 +336,7 @@ console.log("admin")
                 label="البريد الإلكتروني:"
                 type="email"
                 placeholder="example@gmail.com"
-                value={formData.email}
+                value={formData.email.toLowerCase()}
                 onChange={(val) => handleInputChange("email", val)}
                 error={errors.email}
               />
