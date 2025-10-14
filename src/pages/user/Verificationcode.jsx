@@ -102,15 +102,15 @@ export default function VerificationCode() {
 
   return (
     <div className="login-container">
-      {/* Logo centré avec espace en dessous */}
+      {/* Logo centré avec espace en dessous - MÊME DESIGN QUE LOGIN */}
       <div className="login-logo">
         <img src="/logo.png" alt="Logo" />
       </div>
       
-      {/* White Card avec titre et icône à l'intérieur */}
+      {/* White Card avec titre et icône à l'intérieur - MÊME DESIGN QUE LOGIN */}
       <div className="login-card">
         <div className="login-card-content">
-          {/* Header avec bouton de retour et titre à l'intérieur de la carte */}
+          {/* Header avec bouton de retour et titre à l'intérieur de la carte - MÊME DESIGN QUE LOGIN */}
           <div className="login-header">
             <ArrowLeft 
               className="login-back-button" 
