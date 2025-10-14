@@ -789,14 +789,20 @@ const validateOrderData = (orderData) => {
                     title="تم استلام طلبيتك "
                     iconPopup={donepopup}
                     contenu="سنتواصل معك قريبا عبر مكالمة هاتفية أو عبر الواتساب لتأكيد عملية التوصيل. "
-                    buttons={[
-                      {
-                        text: "حسنا",
-                        navigateTo: "/mycommandsdropshipper#orders",
-                        backgroundColor: "#22C55E",
-                        textColor: "#FFFFFF"
-                      }
-                    ]}
+                        buttons={[
+    {
+      text: "حسنا",
+      onClick: () => {
+        navigate("/mycommands");
+        // Forcer le scroll vers le haut après la navigation
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 100);
+      },
+      backgroundColor: "#22C55E",
+      textColor: "#FFFFFF"
+    }
+  ]}
                     onClose={() => setShowPopup(false)}
                     onConfirm={() => {
                       setShowPopup(false);
