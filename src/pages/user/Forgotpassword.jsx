@@ -54,10 +54,17 @@ export default function ForgotPassword() {
     if (!isFormValid()) return;
 
     setIsSending(true);
-    try {
-      const res = await axios.post("https://api.kadi-inv.store/api/forgot-password/", {
-        email: formData.email,
-      });
+     try {
+    const res = await axios.post("https://api.kadi-inv.store/api/forgot-password/", {
+      email: formData.email,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Ajoutez ces headers si nécessaire
+        'Accept': 'application/json',
+      },
+      withCredentials: true // Important pour les cookies de session
+    });
 
       navigate("/verification", {
         state: {
