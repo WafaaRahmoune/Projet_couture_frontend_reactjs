@@ -30,7 +30,7 @@ export default function ForgotPassword() {
   }, []);
 
   const isFormValid = () => {
-    const email = formData.email.trim();
+    const email = formData.email.trim().toLowerCase();
     const newErrors = {};
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +59,7 @@ export default function ForgotPassword() {
     setIsSending(true);
      try {
     const res = await axios.post("https://api.kadi-inv.store/api/forgot-password/", {
-      email: formData.email,
+      email: formData.email.trim().toLowerCase(),
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
 
       navigate("/verification", {
         state: {
-          email: formData.email,
+          email: formData.email.trim().toLowerCase(),
           token: res.data.token,
         },
       });
@@ -128,7 +128,7 @@ export default function ForgotPassword() {
                 label="البريد الإلكتروني:"
                 type="text" // Important: avoid native HTML validation
                 placeholder="example@gmail.com"
-                value={formData.email.toLowerCase()}
+                value={formData.email.trim().toLowerCase()}
                 onChange={(val) => handleInputChange("email", val.toLowerCase())}
                 error={errors.email}
               />
@@ -136,7 +136,7 @@ export default function ForgotPassword() {
 
             <button
               type="submit"
-              disabled={!formData.email || isSending}
+              disabled={!formData.email.trim().toLowerCase() || isSending}
               className="login-submit-button"
             >
               {isSending ? "جارٍ الإرسال..." : "إرسال الرمز"}
