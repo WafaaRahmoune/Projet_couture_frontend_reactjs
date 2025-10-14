@@ -10,7 +10,7 @@ export default function CompteDropshipperPage(){
      navigate("/login")
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('user');
+    
  
          
    
