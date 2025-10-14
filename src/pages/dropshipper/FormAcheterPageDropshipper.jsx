@@ -793,7 +793,7 @@ const validateOrderData = (orderData) => {
     {
       text: "حسنا",
       onClick: () => {
-        navigate("/mycommands");
+        navigate("/mycommandsdropshipper#orders");
         // Forcer le scroll vers le haut après la navigation
         setTimeout(() => {
           window.scrollTo(0, 0);
