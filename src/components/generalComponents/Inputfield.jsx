@@ -21,7 +21,10 @@ export default function InputField({
   uploadedFiles = [],
   onRemoveFile = () => {},
   inputRef = null,
-  special = false // Active le menu personnalisé dans tous les cas
+  special = false, // Active le menu personnalisé dans tous les cas
+  inputMode = "text",
+  lang = undefined,
+  dir = undefined
 }) {
   const internalFileInputRef = useRef(null);
   const fileInputRef = inputRef || internalFileInputRef;
@@ -97,11 +100,13 @@ export default function InputField({
             {special ? (
               <div className="custom-select-container">
                 <div 
-                  className={`custom-select-trigger ${hasError ? 'error-border' : ''} ${!selectedOption ? 'placeholder-style' : ''}`}
-                  onClick={toggleCustomMenu}
-                >
-                  {getSelectedLabel()}
-                </div>
+  className={`custom-select-trigger ${hasError ? 'error-border' : ''} ${!selectedOption ? 'placeholder-style' : ''}`}
+  onClick={toggleCustomMenu}
+  lang={lang}
+  dir={dir}
+>
+  {getSelectedLabel()}
+</div>
                 
                 {showCustomMenu && (
                   <div className="custom-select-menu">
@@ -203,7 +208,8 @@ export default function InputField({
   )}
 </div>
           </>
-        ) : (
+        ) 
+        : (
           <input
             type={type}
             placeholder={placeholder}
@@ -211,6 +217,9 @@ export default function InputField({
             value={value}
             onChange={onChange}
             onBlur={onBlur}
+           inputMode={inputMode}
+  lang={lang}
+  dir={dir}
           />
         )}
       </div>
