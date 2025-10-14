@@ -715,6 +715,9 @@ products.forEach((product) => {
                 size="oneline"
                 down={false}
                 value={form.address}
+                inputMode="text"
+                lang="ar"
+                dir="rtl"
                 onChange={(e) => handleInputChange('address', e.target.value)}
                 hasError={isSubmitted && !!errors.address}
               />
