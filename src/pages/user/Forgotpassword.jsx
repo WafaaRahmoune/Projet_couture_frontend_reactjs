@@ -13,10 +13,13 @@ export default function ForgotPassword() {
   const navigate = useNavigate();
 
   const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }));
-    }
+    const processedValue = field === "email" ? value.toLowerCase() : value;
+ setFormData((prev) => ({ ...prev, [field]: processedValue }));
+  if (errors[field]) {
+    setErrors((prev) => ({ ...prev, [field]: "" }));
+  }
+    
+    
   };
 
   useEffect(() => {
@@ -125,7 +128,7 @@ export default function ForgotPassword() {
                 label="البريد الإلكتروني:"
                 type="text" // Important: avoid native HTML validation
                 placeholder="example@gmail.com"
-                value={formData.email.toLowerCase()}
+                value={formData.email}
                 onChange={(val) => handleInputChange("email", val.toLowerCase())}
                 error={errors.email}
               />
