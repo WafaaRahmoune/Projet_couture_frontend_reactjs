@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import CommandCard from "../../components/generalComponents/Commandcard";
 import { TbBoxOff } from "react-icons/tb";
 import photo from '../../assets/icons/photo.png';
-import imageaffichage from '../../assets/icons/two.png';
 import date from '../../assets/icons/date.png';
 import price from '../../assets/icons/price.png';
 import telephone from '../../assets/icons/whatsapp.png';
@@ -109,7 +108,7 @@ const response = await fetch(`https://api.kadi-inv.store/clientapi/allorders/`, 
         prix: [`${totalPrice || 0}دج`, price], // Utiliser totalPrice au lieu de final_price
         total_quantity: order.total_quantity, // Ajouter la quantité totale si nécessaire
         status: getStatus(order.state),
-        selectedImages: images.length > 0 ? images : [imageaffichage],
+        selectedImages: images.length > 0 ? images : "",
         pdfFiles: pdfFiles,
         variants: variants,
         isCustom: false
@@ -158,7 +157,7 @@ const response = await fetch(`https://api.kadi-inv.store/clientapi/allorders/`, 
         prix: customPrice === null ? null : [customPrice, price],
         total_quantity: order.total_quantity || 1, // Ajouter la quantité totale
         status: getStatus(order.state),
-        selectedImages: images.length > 0 ? images : [imageaffichage],
+        selectedImages: images.length > 0 ? images : "",
         pdfFiles: pdfFiles,
         variants: variants,
         isCustom: true
