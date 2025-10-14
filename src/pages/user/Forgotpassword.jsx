@@ -126,7 +126,7 @@ export default function ForgotPassword() {
                 type="text" // Important: avoid native HTML validation
                 placeholder="example@gmail.com"
                 value={formData.email.toLowerCase()}
-                onChange={(val) => handleInputChange("email", val)}
+                onChange={(val) => handleInputChange("email", val.toLowerCase())}
                 error={errors.email}
               />
             </div>
