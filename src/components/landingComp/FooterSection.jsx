@@ -10,14 +10,14 @@ export default function FooterSection() {
   // Liens par défaut
   const defaultLinks = [
     { name: "whatsapp", url: "https://chat.whatsapp.com/CIsLTdIOXGrB9zWTQAHbpx?mode=ac_t" },
-    { name: "facebook", url: "https://m.facebook.com/ala.banahyt.lalalabansit.alashur.unyat/" },
-    { name: "instagram", url: "https://instagram.com/kadi.householde" },
+    { name: "facebook", url: "https://www.facebook.com/profile.php?id=61581490644644" },
+    { name: "instagram", url: "https://www.instagram.com/kadiinvestissement?igsh=em56YmFrcGIxN2N0" },
   ];
 
   const [socialLinks, setSocialLinks] = useState(defaultLinks);
   const [contactInfo, setContactInfo] = useState({
-    email: "info@Kadi'sHouseholde.com",
-    phone: "0696449925"
+    email: "kadiinvestissement@gmail.com",
+    phone: "0784784814"
   });
 
   useEffect(() => {
