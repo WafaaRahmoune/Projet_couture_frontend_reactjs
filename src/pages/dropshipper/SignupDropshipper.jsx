@@ -578,7 +578,7 @@ export default function SignupDropshipper() {
             <p className="registration-login-text">
               هل لديك حساب بالفعل؟{" "}
               <span className="registration-login-link">
-                <Link to="/loginDropshipper">تسجيل الدخول</Link>
+                <Link to="/login">تسجيل الدخول</Link>
               </span>
             </p>
           </form>
