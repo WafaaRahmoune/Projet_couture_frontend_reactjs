@@ -53,47 +53,42 @@ export default function ForgotPassword() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!isFormValid()) return;
+  e.preventDefault();
+  if (!isFormValid()) return;
 
-    setIsSending(true);
-     try {
+  setIsSending(true);
+  try {
     const res = await axios.post("https://api.kadi-inv.store/api/forgot-password/", {
-      email: formData.email.trim().toLowerCase(),
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        // Ajoutez ces headers si nécessaire
-        'Accept': 'application/json',
-      },
-      withCredentials: true // Important pour les cookies de session
+      email: formData.email,
     });
 
-      navigate("/verification", {
-        state: {
-          email: formData.email.trim().toLowerCase(),
-          token: res.data.token,
-        },
-      });
-    } catch (err) {
+    navigate("/verification", {
+      state: {
+        email: formData.email,
+        token: res.data.token,
+      },
+    });
+  } catch (err) {
+    const detail = err.response?.data?.detail;
+    let errorMessage = "حدث خطأ أثناء إرسال الرمز";
 
-      const detail = err.response?.data?.detail;
-
-      if (typeof detail === "string") {
-        setErrors(detail);
-      } else if (Array.isArray(detail) && typeof detail[0] === "string") {
-        setErrors(detail[0]);
-      } else if (typeof detail === "object" && detail !== null && "string" in detail) {
-        setErrors(detail.string);
-      } else {
-        setErrors("حدث خطأ أثناء إرسال الرمز");
-        setErrors({ email: err.response?.data?.detail || "حدث خطأ أثناء إرسال الرمز" });
-
-      }
-    } finally {
-      setIsSending(false);
+    if (typeof detail === "string") {
+      errorMessage = detail;
+    } else if (Array.isArray(detail) && typeof detail[0] === "string") {
+      errorMessage = detail[0];
+    } else if (typeof detail === "object" && detail !== null && "string" in detail) {
+      errorMessage = detail.string;
+    } else if (err.response?.data?.detail) {
+      errorMessage = err.response.data.detail;
     }
-  };
+
+    // Toujours setter l'erreur comme un objet avec la clé "email"
+    setErrors({ email: errorMessage });
+  } finally {
+    setIsSending(false);
+  }
+};
+
 
   const handleBackToLogin = () => {
     navigate("/login");
