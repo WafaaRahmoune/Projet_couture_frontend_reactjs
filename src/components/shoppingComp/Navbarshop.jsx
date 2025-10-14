@@ -46,6 +46,7 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
   const navigate = useNavigate();
   
   const goToShop = () => {
+    window.scrollTo(0, 0);
     const userData = localStorage.getItem('user');
     if (userData) {
       try {
@@ -104,6 +105,7 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
   };
 
  const goToCompte = () => {
+   window.scrollTo(0, 0);
   const userData = localStorage.getItem('user');
   if (userData) {
     try {
@@ -136,6 +138,7 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
 };
 
   const goToMycommands = () => {
+    window.scrollTo(0, 0);
     const userData = localStorage.getItem('user');
     if (userData) {
       try {
@@ -169,6 +172,7 @@ export default function Navbarshop({ defaultSection = "#shop" }) {
   };
 
   const goTolandingPage = () => {
+    window.scrollTo(0, 0);
     navigate("/");
   };
 
