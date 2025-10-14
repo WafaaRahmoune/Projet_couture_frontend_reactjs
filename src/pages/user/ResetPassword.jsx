@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom"; // Ajout de Link
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { PasswordField } from "@/components/ui/Passwordfield";
 import { Button } from "@/components/ui/Button";
@@ -60,18 +60,16 @@ export default function ResetPassword() {
         new_password: password.trim(),
       });
 
-
-// Rediriger vers la page de succès après 3 secondes
-setTimeout(() => {
-  navigate("/password-success");
-}, 2000);
+      // Rediriger vers la page de succès après 2 secondes
+      setTimeout(() => {
+        navigate("/password-success");
+      }, 2000);
 
     } catch (err) {
       const errorMessage = err.response?.data?.detail ||
         "حدث خطأ أثناء إعادة تعيين كلمة المرور";
       
       setError(errorMessage);
-      
 
       // Si l'erreur concerne un lien expiré, on l'affiche avec un lien
       if(errorMessage.includes("انتهت صلاحية الرابط") || errorMessage.includes('رمز التحقق غير صالح.')) {
@@ -92,66 +90,64 @@ setTimeout(() => {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#F4F3EF] flex flex-col items-center justify-start px-4 pt-8 pb-4">
-      {/* Header */}
-      <div className="relative w-full max-w-md flex justify-center items-center mb-4">
-        <h2 className="text-[#E5B62B] text-2xl text-center amiri-bold">
-          إعادة تعيين كلمة المرور
-        </h2>
-        <ArrowLeft
-          className="absolute left-4 text-[#374151] w-5 h-5 cursor-pointer"
-          onClick={handleBack}
-        />
-        <div className="fixed top-4 right-0 z-50">
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="w-[8rem] max-w-full h-auto object-contain"
-          />
-        </div>
+    <div className="login-container">
+      {/* Logo centré avec espace en dessous */}
+      <div className="login-logo">
+        <img src="/logo.png" alt="Logo" />
       </div>
-
-      {/* Card */}
-      <div className="bg-white rounded-t-3xl rounded-b-2xl shadow-md w-full max-w-xl h-[75vh] flex flex-col overflow-hidden">
-        <div className="overflow-y-auto px-6 py-6 flex-1" dir="rtl">
-          <form onSubmit={handleSubmit} className="space-y-6 text-right font-[Cairo]">
-            {/* Instruction */}
-            <p className="text-base text-[#374151] text-center">
-              الرجاء إدخال كلمة مرور جديدة لحسابك.
-            </p>
-
-            {/* Password Field */}
-            <PasswordField
-              label="كلمة المرور:"
-              placeholder="أدخل كلمة المرور"
-              value={password}
-              show={showPassword}
-              toggleShow={() => setShowPassword((prev) => !prev)}
-              onChange={(val) => setPassword(val)}
-              error={error && typeof error === 'string' && error.includes("كلمة المرور") ? error : ""}
+      
+      {/* White Card avec titre et icône à l'intérieur */}
+      <div className="login-card">
+        <div className="login-card-content">
+          {/* Header avec bouton de retour et titre à l'intérieur de la carte */}
+          <div className="login-header">
+            <ArrowLeft 
+              className="login-back-button" 
+              onClick={handleBack}
             />
-
-            {/* Confirm Password Field */}
-            <PasswordField
-              label="تأكيد كلمة المرور:"
-              placeholder="أدخل كلمة المرور لتأكيدها"
-              value={confirmPassword}
-              show={showConfirmPassword}
-              toggleShow={() => setShowConfirmPassword((prev) => !prev)}
-              onChange={(val) => setConfirmPassword(val)}
-              error={error && typeof error === 'string' && error.includes("تأكيد") ? error : ""}
-            />
-
+            <h2 className="login-title">إعادة تعيين كلمة المرور</h2>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="login-form">
+            {/* Message d'erreur général */}
             {error && (
-              <p className="text-red-500 text-sm text-center">
-                {error}
-              </p>
+              <div className="login-error-general">
+                <p className="login-error-text">{error}</p>
+              </div>
             )}
 
-            {/* Save Button */}
+            <div className="login-input-group">
+              {/* Instruction */}
+              <p className="text-base text-[#374151] font-[Cairo] text-center mb-6">
+                الرجاء إدخال كلمة مرور جديدة لحسابك.
+              </p>
+
+              {/* Password Field */}
+              <PasswordField
+                label="كلمة المرور:"
+                placeholder="أدخل كلمة المرور"
+                value={password}
+                show={showPassword}
+                toggleShow={() => setShowPassword((prev) => !prev)}
+                onChange={(val) => setPassword(val)}
+                error={error && typeof error === 'string' && error.includes("كلمة المرور") ? error : ""}
+              />
+
+              {/* Confirm Password Field */}
+              <PasswordField
+                label="تأكيد كلمة المرور:"
+                placeholder="أدخل كلمة المرور لتأكيدها"
+                value={confirmPassword}
+                show={showConfirmPassword}
+                toggleShow={() => setShowConfirmPassword((prev) => !prev)}
+                onChange={(val) => setConfirmPassword(val)}
+                error={error && typeof error === 'string' && error.includes("تأكيد") ? error : ""}
+              />
+            </div>
+
             <Button
               type="submit"
-              className="w-full h-12 rounded-full text-white font-medium mt-4"
+              className="login-submit-button w-full"
               style={{ backgroundColor: "#E5B62B" }}
               disabled={!password || !confirmPassword}
             >
