@@ -24,7 +24,7 @@ export default function ProductCard({ product, icon }) {
   const [iconClicked, setIconClicked] = useState(false);
   console.log(icon)
   const goToform = () => {
-
+window.scrollTo(0, 0);
     if (icon !=null){
 navigate("/FormAcheterPageDropshipper", {
       state: {
