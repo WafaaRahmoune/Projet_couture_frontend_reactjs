@@ -216,6 +216,9 @@ export default function RegistrationCouturiere() {
       validateFilesState(updatedFiles)
       return updatedFiles
     })
+     if (isSubmitting) {
+    setIsSubmitting(false)
+  }
     event.target.value = null
   }
 
@@ -225,6 +228,10 @@ export default function RegistrationCouturiere() {
       validateFilesState(updatedFiles)
       return updatedFiles
     })
+    // Réactiver le bouton
+  if (isSubmitting) {
+    setIsSubmitting(false)
+  }
   }
 
   const isFormValid = () => {
@@ -495,6 +502,7 @@ export default function RegistrationCouturiere() {
               value={formData.fullName}
               onChange={(val) => handleInputChange("fullName", val)}
               error={errors.fullName}
+              data-error={!!errors.fullName} 
             />
             <InputField
               label="البريد الإلكتروني:"
@@ -512,6 +520,7 @@ export default function RegistrationCouturiere() {
               toggleShow={() => setShowPassword((prev) => !prev)}
               onChange={(val) => handleInputChange("password", val)}
               error={errors.password}
+              data-error={!!errors.password}
             />
             <PasswordField
               label="تأكيد كلمة المرور:"
@@ -592,6 +601,9 @@ export default function RegistrationCouturiere() {
                       return newErrors
                     })
                   }
+                  if (isSubmitting) {
+      setIsSubmitting(false)
+    }
                 }}
                 className="data-[state=checked]:border-[#E5B62B] data-[state=checked]:bg-[#E5B62B]"
               />
