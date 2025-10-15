@@ -418,6 +418,7 @@ export default function RegistrationCouturiere() {
   }
 }
 
+
   const handleBackToLogin = () => {
     navigate("/login");
   };
