@@ -6,7 +6,28 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../../style/authenticationStyle/LoginClient.css";
 import logo from "../../assets/logobleu.png";
-
+const styles = {
+  errorGeneral: {
+    backgroundColor: "#FEF2F2",
+    border: "1px solid #FECACA",
+    borderRadius: "8px",
+    padding: "12px",
+    marginBottom: "16px",
+    textAlign: "center",
+  },
+  errorText: {
+    color: "#DC2626",
+    fontSize: "14px",
+    fontWeight: "500",
+    margin: 0,
+  },
+  errorInput: {
+    color: "#DC2626",
+    fontSize: "12px",
+    marginTop: "4px",
+    display: "block",
+  }
+};
 // Dictionnaire des messages d'erreur en arabe
 const ERROR_MESSAGES = {
   // Erreurs générales
@@ -168,8 +189,8 @@ const handleSuccessfulLogin = (userRole) => {
 };
 
   // Fonction pour extraire le message d'erreur approprié
-  const getErrorMessage = (errorType, defaultMessage) => {
-    return ERROR_MESSAGES[errorType] || defaultMessage || ERROR_MESSAGES.unknown_error;
+  const getErrorMessage = (errorType) => {
+    return ERROR_MESSAGES[errorType] || ERROR_MESSAGES.unknown_error;
   };
 
   const handleSubmit = async (e) => {
@@ -324,12 +345,11 @@ console.log("admin")
           </div>
           
           <form onSubmit={handleSubmit} className="login-form">
-            {/* Message d'erreur général */}
-            {errors.general && (
-              <div className="login-error-general">
-                <p className="login-error-text">{errors.general}</p>
-              </div>
-            )}
+                 {errors.general && (
+  <div style={styles.errorGeneral}>
+    <p style={styles.errorText}>{errors.general}</p>
+  </div>
+)}
 
             <div className="login-input-group">
               <InputField
