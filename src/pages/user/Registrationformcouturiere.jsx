@@ -484,13 +484,13 @@ export default function RegistrationCouturiere() {
   } else {
     setSubmitError("حدث خطأ غير متوقع")
   }
-       setTimeout(() => {
+      setTimeout(() => {
       scrollToFirstError();
     }, 100);
+  } finally {
+    setIsSubmitting(false);
   }
-}
-    
-}
+}; 
 
   const handleBackToLogin = () => {
     navigate("/login");
