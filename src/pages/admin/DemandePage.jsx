@@ -927,7 +927,7 @@ const handleStatusChange = useCallback(async (uniqueId, originalId, orderType, s
        
         setStockRequirements(verificationResult);
     setTargetStatus("قيد التنفيذ"); // ← AJOUTEZ CETTE LIGNE
-    setShowStockPopup(true);
+    setShowStockPopup(false);
 
         const updateResponse = await fetch(`https://api.kadi-inv.store/adminapi/inprogressCommandstandard/${commandCode}/`, {
           method: 'PATCH',
