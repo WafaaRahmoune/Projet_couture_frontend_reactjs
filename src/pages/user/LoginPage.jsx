@@ -6,6 +6,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../../style/authenticationStyle/LoginClient.css";
 import logo from "../../assets/logobleu.png";
+
+
 const styles = {
   errorGeneral: {
     backgroundColor: "#FEF2F2",
@@ -20,14 +22,9 @@ const styles = {
     fontSize: "14px",
     fontWeight: "500",
     margin: 0,
-  },
-  errorInput: {
-    color: "#DC2626",
-    fontSize: "12px",
-    marginTop: "4px",
-    display: "block",
   }
 };
+
 // Dictionnaire des messages d'erreur en arabe
 const ERROR_MESSAGES = {
   // Erreurs générales
@@ -36,6 +33,7 @@ const ERROR_MESSAGES = {
   "account_disabled": "تم تعطيل حسابك من قبل الإدارة.",
   "couturiere_not_found": "حساب الخياطة غير موجود.",
   "dropshipper_not_found": "حساب الموزع غير موجود.",
+  "expired_verification_token": "بريدك الإلكتروني غير موكد. يرجى الضغط على الزر لإرسال رابط التحقق",
   
   // Erreurs spécifiques dropshipper
   "dropshipper_pending": "حسابك كموزع قيد المراجعة.",
@@ -67,6 +65,54 @@ export default function LoginPage() {
   // Récupérer le path de redirection depuis l'état de navigation ou du localStorage
   const [redirectPath, setRedirectPath] = useState("");
   const [buttonName, setButtonName] = useState("");
+
+  // États pour la logique de réenvoi du lien
+  const [showResendButton, setShowResendButton] = useState(false);
+  const [isResending, setIsResending] = useState(false);
+  const [resendMessage, setResendMessage] = useState("");
+  const [resendCount, setResendCount] = useState(0);
+
+  // Fonction pour renvoyer l'email de vérification
+  const handleResendVerification = async () => {
+    if (!formData.email.trim()) {
+      setErrors({ ...errors, general: "الرجاء إدخال البريد الإلكتروني أولاً" });
+      return;
+    }
+
+    setIsResending(true);
+    setResendMessage("");
+    setErrors({ ...errors, general: "" });
+
+    try {
+      const response = await axios.post(
+        "https://api.kadi-inv.store/api/resend-verification/",
+        { email: formData.email.trim().toLowerCase() },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      setResendMessage("✅ تم إرسال رابط التحقق بنجاح إلى بريدك الإلكتروني!");
+      setShowResendButton(false);
+      
+      // ✅ Incrémente le compteur à chaque envoi réussi
+      setResendCount((prev) => prev + 1);
+    } catch (error) {
+      console.error("Erreur lors du renvoi de vérification:", error);
+
+      if (error.response?.status === 404) {
+        setErrors({
+          ...errors,
+          general: "هذا الحساب غير موجود أو تم التحقق منه بالفعل.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          general: "حدث خطأ أثناء إعادة إرسال رابط التحقق.",
+        });
+      }
+    } finally {
+      setIsResending(false);
+    }
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -130,10 +176,10 @@ export default function LoginPage() {
         return true;
 
       case "couturiere_désactivé":
-  navigate("/NotActiveCouturiere", {
-    state: { email, role, message: ERROR_MESSAGES[errorType] }
-  });
-  return true;
+        navigate("/NotActiveCouturiere", {
+          state: { email, role, message: ERROR_MESSAGES[errorType] }
+        });
+        return true;
         
       case "dropshipper_pending":
         navigate("/RegistrationSucess", {
@@ -159,38 +205,36 @@ export default function LoginPage() {
   };
 
   // Fonction pour gérer la redirection après login réussi
- // Fonction pour gérer la redirection après login réussi
-const handleSuccessfulLogin = (userRole) => {
-  // Nettoyer le localStorage après un login réussi
-  localStorage.removeItem(REDIRECT_STORAGE_KEY);
+  const handleSuccessfulLogin = (userRole) => {
+    // Nettoyer le localStorage après un login réussi
+    localStorage.removeItem(REDIRECT_STORAGE_KEY);
 
-  // TOUJOURS utiliser la liste 2 selon le rôle, ignorer le redirectPath
-  switch (userRole) {
-    case "client":
-      navigate("/shopping");
-      break;
-    case "couturiere":
-      navigate("/MesModels");
-      break;
-    case "dropshipper":
-      navigate("/shoppingDropshipper");
-      break;
-    case "affiliate":
-      navigate("/affiliateDashboard/codepromo");
-      break;
-
-    case "admin":
-      navigate("/admin/dashboard");
-      break;
-    default:
-      navigate("/");
-      console.warn(`Rôle non reconnu: ${userRole}`);
-  }
-};
+    // TOUJOURS utiliser la liste 2 selon le rôle, ignorer le redirectPath
+    switch (userRole) {
+      case "client":
+        navigate("/shopping");
+        break;
+      case "couturiere":
+        navigate("/MesModels");
+        break;
+      case "dropshipper":
+        navigate("/shoppingDropshipper");
+        break;
+      case "affiliate":
+        navigate("/affiliateDashboard/codepromo");
+        break;
+      case "admin":
+        navigate("/admin/dashboard");
+        break;
+      default:
+        navigate("/");
+        console.warn(`Rôle non reconnu: ${userRole}`);
+    }
+  };
 
   // Fonction pour extraire le message d'erreur approprié
-  const getErrorMessage = (errorType) => {
-    return ERROR_MESSAGES[errorType] || ERROR_MESSAGES.unknown_error;
+  const getErrorMessage = (errorType, defaultMessage) => {
+    return ERROR_MESSAGES[errorType] || defaultMessage || ERROR_MESSAGES.unknown_error;
   };
 
   const handleSubmit = async (e) => {
@@ -207,6 +251,7 @@ const handleSuccessfulLogin = (userRole) => {
 
     setIsLogging(true);
     setErrors({ email: "", password: "", general: "" });
+    setShowResendButton(false); // Reset du bouton de réenvoi
 
     try {
       const response = await axios.post("https://api.kadi-inv.store/api/token/", formData, {
@@ -220,7 +265,7 @@ const handleSuccessfulLogin = (userRole) => {
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
       // Redirection après login réussi
-      handleSuccessfulLogin(response.data.user.role, redirectPath);
+      handleSuccessfulLogin(response.data.user.role);
 
     } catch (error) {
       console.error("Login failed:", error);
@@ -248,12 +293,21 @@ const handleSuccessfulLogin = (userRole) => {
         // Gérer les autres erreurs
         const errorMessage = getErrorMessage(errorType, errorDetail);
         
-        if (errorType === "bad_email_or_password" || errorType === "inactive_account") {
-          setErrors({ email: "", password: errorMessage, general: "" });
+        // ✅ LOGIQUE CORRIGÉE : Gestion différenciée des erreurs de vérification
+        if (errorType === "expired_verification_token") {
+          // Pour les tokens expirés : montrer le message ET le bouton
+          setErrors({ email: "", password: "", general: ERROR_MESSAGES.expired_verification_token });
+          setShowResendButton(true);
+        } else if (errorType === "inactive_account") {
+          // Pour les comptes inactifs : seulement le message, PAS de bouton
+          setErrors({ email: "", password: "", general: ERROR_MESSAGES.inactive_account });
+          setShowResendButton(false);
+        } else if (errorType === "bad_email_or_password") {
+          setErrors({ email: "", password: ERROR_MESSAGES.bad_email_or_password, general: "" });
         } else {
           setErrors({ email: "", password: "", general: errorMessage });
         }
-
+        
       } else if (error.request) {
         setErrors({ 
           email: "", 
@@ -273,57 +327,48 @@ const handleSuccessfulLogin = (userRole) => {
   };
 
   // Modifier le lien vers signup pour inclure la redirection
- const getSignupLink = () => {
-  
- 
-  if (redirectPath) {
-    console.log(redirectPath)
-    return redirectPath;
-  }
-
-  // Vérifier le rôle dans localStorage
-  const userData = localStorage.getItem("user");
-  if (userData) {
-    try {
-      const { role } = JSON.parse(userData);
-      
-      if (role === "dropshipper") {
-        console.log("dropshipper")
-return "/SignupDropshipper";
-      }
-      if (role === "client"){
- console.log("dropshipper")
-        return "/registerclient";
-      }
-       
-      
-      if (role === "couturiere") {
-console.log("dropshipper")
-        return "/registerclient";
-      }
-        
-      if (role === "affiliate"){
-console.log("dropshipper")
-        return null;
-      }
-
-      if (role === "admin"){
-console.log("admin")
-        return null;
-      }
-
-
-        
-      
-    } catch (error) {
-      console.error("Erreur parsing userData:", error);
+  const getSignupLink = () => {
+    if (redirectPath) {
+      console.log(redirectPath)
+      return redirectPath;
     }
-  }
 
-  return null; // fallback par défaut
-};
+    // Vérifier le rôle dans localStorage
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const { role } = JSON.parse(userData);
+        
+        if (role === "dropshipper") {
+          console.log("dropshipper")
+          return "/SignupDropshipper";
+        }
+        if (role === "client"){
+          console.log("dropshipper")
+          return "/registerclient";
+        }
+        
+        if (role === "couturiere") {
+          console.log("dropshipper")
+          return "/registerclient";
+        }
+        
+        if (role === "affiliate"){
+          console.log("dropshipper")
+          return null;
+        }
 
-  
+        if (role === "admin"){
+          console.log("admin")
+          return null;
+        }
+      } catch (error) {
+        console.error("Erreur parsing userData:", error);
+      }
+    }
+
+    return null; // fallback par défaut
+  };
 
   return (
     <div className="login-container">
@@ -345,11 +390,38 @@ console.log("admin")
           </div>
           
           <form onSubmit={handleSubmit} className="login-form">
-                 {errors.general && (
+           {errors.general && (
   <div style={styles.errorGeneral}>
     <p style={styles.errorText}>{errors.general}</p>
   </div>
 )}
+
+
+            {/* ✅ Bouton de réenvoi de vérification - SEULEMENT pour expired_verification_token */}
+            {showResendButton && (
+              <button
+                type="button"
+                onClick={handleResendVerification}
+                disabled={isResending || resendCount >= 3}
+                className={`h-10 w-full rounded-full font-medium text-white text-sm transition-all duration-300
+                  ${isResending || resendCount >= 3
+                    ? "bg-[#E5B62B]/60 cursor-not-allowed"
+                    : "bg-[#E5B62B] hover:bg-[#d4a724] active:scale-95 shadow-sm"
+                  }`}
+              >
+                {isResending
+                  ? "⏳ جاري الإرسال..."
+                  : resendCount > 0
+                    ? `📩 إعادة إرسال رابط التحقق (${resendCount}/3)`
+                    : "📩 إرسال رابط التحقق"}
+              </button>
+            )}
+
+            {resendMessage && (
+              <p className="text-center text-green-600 font-medium mt-3 animate-pulse">
+                {resendMessage}
+              </p>
+            )}
 
             <div className="login-input-group">
               <InputField
@@ -370,15 +442,17 @@ console.log("admin")
                 error={errors.password}
               />
             </div>
- {getSignupLink() !== null && (
-            <div className="login-forgot-password">
-              <span className="login-forgot-link">
-                <Link to="/forgot-password">
-                  نسيت كلمة المرور؟ 
-                </Link>
-              </span>
-            </div>
- )}
+
+            {getSignupLink() !== null && (
+              <div className="login-forgot-password">
+                <span className="login-forgot-link">
+                  <Link to="/forgot-password">
+                    نسيت كلمة المرور؟ 
+                  </Link>
+                </span>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={!isFormValid() || isLogging}
@@ -387,27 +461,27 @@ console.log("admin")
               {isLogging ? "جاري الدخول..." : "دخول"}
             </button>
 
-{getSignupLink() !== null && (
-  <p className="login-signup-text">
-    {(() => {
-      const signupLink = getSignupLink();
-      if (signupLink === "/registerclient") {
-        return "ليس لديك حساب زبون؟ ";
-      } else if (signupLink === "/SignupDropshipper") {
-        return "ليس لديك حساب دروبشيبر؟ ";
-      } else if (signupLink === "/signup") {
-        return "ليس لديك حساب خياطة؟ ";
-      } else {
-        return "ليس لديك حساب؟ ";
-      }
-    })()}
-    <span className="login-signup-link">
-      <Link to={getSignupLink()}>
-        أنشئ حسابك الآن
-      </Link>
-    </span>
-  </p>
-)}
+            {getSignupLink() !== null && (
+              <p className="login-signup-text">
+                {(() => {
+                  const signupLink = getSignupLink();
+                  if (signupLink === "/registerclient") {
+                    return "ليس لديك حساب زبون؟ ";
+                  } else if (signupLink === "/SignupDropshipper") {
+                    return "ليس لديك حساب دروبشيبر؟ ";
+                  } else if (signupLink === "/signup") {
+                    return "ليس لديك حساب خياطة؟ ";
+                  } else {
+                    return "ليس لديك حساب؟ ";
+                  }
+                })()}
+                <span className="login-signup-link">
+                  <Link to={getSignupLink()}>
+                    أنشئ حسابك الآن
+                  </Link>
+                </span>
+              </p>
+            )}
           </form>
         </div>
       </div>
