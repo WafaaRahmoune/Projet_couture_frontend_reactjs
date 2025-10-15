@@ -637,9 +637,15 @@ export default function RegistrationCouturiere() {
                 className="data-[state=checked]:border-[#E5B62B] data-[state=checked]:bg-[#E5B62B]"
               />
               <label className="text-right text-sm leading-5 text-[#374151]">
-                أوافق على <span className="cursor-pointer text-[#E5B62B] underline">شروط الاستخدام</span>,{" "}
-                <span className="cursor-pointer text-[#E5B62B] underline">سياسة التسجيل الخاصة بالخياطات</span>
-              </label>
+  أوافق على{" "}
+  <Link to="/Policy" className="cursor-pointer text-[#E5B62B] underline">
+    شروط الاستخدام
+  </Link>
+  ,{" "}
+  <Link to="/Policy" className="cursor-pointer text-[#E5B62B] underline">
+    سياسة التسجيل الخاصة بالخياطات
+  </Link>
+</label>
             </div>
             {errors.terms && <p className="text-center text-xs text-red-500">{errors.terms}</p>}
             
