@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { ArrowLeft, Eye, EyeOff, X, Upload } from 'lucide-react'
-import { InputField } from "@/components/ui/InputField" // Assuming these are custom components
-import { PasswordField } from "@/components/ui/Passwordfield" // Assuming these are custom components
+import { InputField } from "@/components/ui/InputField"
+import { PasswordField } from "@/components/ui/Passwordfield"
 import { Button } from "@/components/ui/Button"
 import { Checkbox } from "@/components/ui/Checkbox"
 import { Link, redirect, useNavigate } from "react-router-dom";
 import axios from "axios"
+import logo from "../../assets/logobleu.png"; // Ajout de l'import du logo
 
 export default function RegistrationCouturiere() {
   const [files, setFiles] = useState([])
@@ -32,126 +33,121 @@ export default function RegistrationCouturiere() {
   const [resendCount, setResendCount] = useState(0)
   const [lastResendTime, setLastResendTime] = useState(null)
 
-      // Re-added useEffect to control body overflow for the fixed layout
-      useEffect(() => {
-        document.body.style.overflow = "hidden"
-        return () => {
-          document.body.style.overflow = "auto"
-        }
-      }, [])
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [])
 
-      // Synchronous validation function for individual fields
-      const validateFieldSync = (field, value, currentFormData) => {
-        let error = null
-        switch (field) {
-          case "fullName":
-            const arabicRegex = /^[\u0600-\u06FF\s]+$/
-            if (!value.trim()) {
-              error = "الاسم الكامل مطلوب"
-            } else if (!arabicRegex.test(value)) {
-              error = "الاسم يجب أن يكون باللغة العربية فقط"
-            } else if (value.trim().length < 2) {
-              error = "الاسم يجب أن يكون أكثر من حرفين"
-            }
-            break
-          case "email":
-            const hasArabicChars = /[\u0600-\u06FF]/.test(value)
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            if (!value) {
-              error = "البريد الإلكتروني مطلوب"
-            } else if (!emailRegex.test(value)) {
-              error = "البريد الإلكتروني غير صحيح"
-            } else if (hasArabicChars) {
-              error = "البريد الإلكتروني يجب أن يكون بالأحرف اللاتينية فقط"
-            }
-            break
-          case "password":
-            const hasArabicCharsPassword = /[\u0600-\u06FF]/.test(value)
-            if (!value) {
-              error = "كلمة المرور مطلوبة"
-            } else if (hasArabicCharsPassword) {
-              error = "كلمة المرور يجب أن تكون بالأحرف اللاتينية فقط"
-            } else if (value.length < 8) {
-              error = "كلمة المرور يجب أن تكون 8 أحرف على الأقل"
-            } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(value)) {
-              error = "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة وأرقام ورموز"
-            } else if (value.trim().toLowerCase() === currentFormData.email.trim().toLowerCase()) {
-              error = "كلمة المرور لا يجب أن تكون نفس البريد الإلكتروني"
-            }
-            break
-          case "confirmPassword":
-            if (!value) {
-              error = "تأكيد كلمة المرور مطلوب"
-            } else if (value !== currentFormData.password) {
-              error = "كلمات المرور غير متطابقة"
-            }
-            break
-            case "phone":
-              const cleaned = value.replace(/\s/g, ""); // remove spaces
-              const phoneRegex = /^0\d{9}$/; // must start with 0 and have 10 digits
-              const validPrefixRegex = /^0(5|6|7|2|3|4)/; // allowed prefixes
-            
-              if (!value) {
-                error = "رقم الهاتف مطلوب";
-              } else if (!phoneRegex.test(cleaned)) {
-                error = "رقم الهاتف يجب أن يحتوي على 10 أرقام";
-              } else if (!validPrefixRegex.test(cleaned)) {
-                error = "رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07 (أو 02-04 للهاتف الثابت)";
-              }
-              break;
-            
-          case "address":
-            const arabicRegexAddress = /^[\u0600-\u06FF\s]+$/
-            if (!value.trim()) {
-              error = "عنوان الإقامة مطلوب"
-            } else if (!arabicRegexAddress.test(value)) {
-              error = "العنوان يجب أن يكون باللغة العربية فقط"
-            } else if (value.trim().length < 10) {
-              error = "العنوان يجب أن يكون أكثر تفصيلاً"
-            }
-            break
+  const validateFieldSync = (field, value, currentFormData) => {
+    let error = null
+    switch (field) {
+      case "fullName":
+        const arabicRegex = /^[\u0600-\u06FF\s]+$/
+        if (!value.trim()) {
+          error = "الاسم الكامل مطلوب"
+        } else if (!arabicRegex.test(value)) {
+          error = "الاسم يجب أن يكون باللغة العربية فقط"
+        } else if (value.trim().length < 2) {
+          error = "الاسم يجب أن يكون أكثر من حرفين"
         }
-        return error
+        break
+      case "email":
+        const hasArabicChars = /[\u0600-\u06FF]/.test(value)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!value) {
+          error = "البريد الإلكتروني مطلوب"
+        } else if (!emailRegex.test(value)) {
+          error = "البريد الإلكتروني غير صحيح"
+        } else if (hasArabicChars) {
+          error = "البريد الإلكتروني يجب أن يكون بالأحرف اللاتينية فقط"
+        }
+        break
+      case "password":
+        const hasArabicCharsPassword = /[\u0600-\u06FF]/.test(value)
+        if (!value) {
+          error = "كلمة المرور مطلوبة"
+        } else if (hasArabicCharsPassword) {
+          error = "كلمة المرور يجب أن تكون بالأحرف اللاتينية فقط"
+        } else if (value.length < 8) {
+          error = "كلمة المرور يجب أن تكون 8 أحرف على الأقل"
+        } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(value)) {
+          error = "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة وأرقام ورموز"
+        } else if (value.trim().toLowerCase() === currentFormData.email.trim().toLowerCase()) {
+          error = "كلمة المرور لا يجب أن تكون نفس البريد الإلكتروني"
+        }
+        break
+      case "confirmPassword":
+        if (!value) {
+          error = "تأكيد كلمة المرور مطلوب"
+        } else if (value !== currentFormData.password) {
+          error = "كلمات المرور غير متطابقة"
+        }
+        break
+        case "phone":
+          const cleaned = value.replace(/\s/g, "");
+          const phoneRegex = /^0\d{9}$/;
+          const validPrefixRegex = /^0(5|6|7|2|3|4)/;
+        
+          if (!value) {
+            error = "رقم الهاتف مطلوب";
+          } else if (!phoneRegex.test(cleaned)) {
+            error = "رقم الهاتف يجب أن يحتوي على 10 أرقام";
+          } else if (!validPrefixRegex.test(cleaned)) {
+            error = "رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07 (أو 02-04 للهاتف الثابت)";
+          }
+          break;
+        
+      case "address":
+        const arabicRegexAddress = /^[\u0600-\u06FF\s]+$/
+        if (!value.trim()) {
+          error = "عنوان الإقامة مطلوب"
+        } else if (!arabicRegexAddress.test(value)) {
+          error = "العنوان يجب أن يكون باللغة العربية فقط"
+        } else if (value.trim().length < 10) {
+          error = "العنوان يجب أن يكون أكثر تفصيلاً"
+        }
+        break
+    }
+    return error
+  }
+
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => {
+      const newFormData = { ...prev, [field]: value }
+      let newErrors = { ...errors }
+
+      const fieldError = validateFieldSync(field, value, newFormData)
+      if (fieldError) {
+        newErrors[field] = fieldError
+      } else {
+        delete newErrors[field]
       }
 
-      const handleInputChange = (field, value) => {
-        setFormData((prev) => {
-          const newFormData = { ...prev, [field]: value }
-          let newErrors = { ...errors } // Start with current errors
+      if (field === "password" || field === "confirmPassword") {
+        const passwordError = validateFieldSync("password", newFormData.password, newFormData)
+        if (passwordError) {
+          newErrors.password = passwordError
+        } else {
+          delete newErrors.password
+        }
 
-          // Validate the changed field
-          const fieldError = validateFieldSync(field, value, newFormData)
-          if (fieldError) {
-            newErrors[field] = fieldError
-          } else {
-            delete newErrors[field]
-          }
-
-          // Special handling for password/confirmPassword to ensure consistency
-          if (field === "password" || field === "confirmPassword") {
-            const passwordError = validateFieldSync("password", newFormData.password, newFormData)
-            if (passwordError) {
-              newErrors.password = passwordError
-            } else {
-              delete newErrors.password
-            }
-
-            const confirmPasswordError = validateFieldSync("confirmPassword", newFormData.confirmPassword, newFormData)
-            if (confirmPasswordError) {
-              newErrors.confirmPassword = confirmPasswordError
-            } else {
-              delete newErrors.confirmPassword
-            }
-          }
-
-          setErrors(newErrors) // Update errors state once
-          return newFormData
-        })
+        const confirmPasswordError = validateFieldSync("confirmPassword", newFormData.confirmPassword, newFormData)
+        if (confirmPasswordError) {
+          newErrors.confirmPassword = confirmPasswordError
+        } else {
+          delete newErrors.confirmPassword
+        }
       }
 
-  // Validates individual files for size/type
+      setErrors(newErrors)
+      return newFormData
+    })
+  }
+
   const validateFiles = (fileList) => {
-    const maxSize = 5 * 1024 * 1024 // 5MB
+    const maxSize = 5 * 1024 * 1024
     const allowedTypes = [
       "application/pdf",
       "application/msword",
@@ -171,7 +167,6 @@ export default function RegistrationCouturiere() {
     return null
   }
 
-  // Helper to validate the entire 'files' state and update errors.files
   const validateFilesState = (currentFiles) => {
     let fileError = null
     if (currentFiles.length === 0) {
@@ -179,7 +174,7 @@ export default function RegistrationCouturiere() {
     } else if (currentFiles.length > 5) {
       fileError = "لا يمكنك تحميل أكثر من 5 ملفات."
     } else {
-      fileError = validateFiles(currentFiles) // Validate each file for size/type
+      fileError = validateFiles(currentFiles)
     }
     setErrors((prev) => {
       const newErrors = { ...prev }
@@ -196,7 +191,7 @@ export default function RegistrationCouturiere() {
     const selectedFiles = Array.from(event.target.files)
     setFiles((prev) => {
       const updatedFiles = [...prev, ...selectedFiles]
-      validateFilesState(updatedFiles) // Validate the new combined list
+      validateFilesState(updatedFiles)
       return updatedFiles
     })
     event.target.value = null
@@ -205,7 +200,7 @@ export default function RegistrationCouturiere() {
   const removeFile = (indexToRemove) => {
     setFiles((prev) => {
       const updatedFiles = prev.filter((_, index) => index !== indexToRemove)
-      validateFilesState(updatedFiles) // Validate the remaining list
+      validateFilesState(updatedFiles)
       return updatedFiles
     })
   }
@@ -216,12 +211,10 @@ export default function RegistrationCouturiere() {
     const hasActiveErrors = Object.values(errors).some((error) => error && error.trim() !== "")
     const termsAccepted = acceptTerms
 
-    // hasActiveErrors now correctly includes file validation errors via errors.files
     return allFieldsFilled && termsAccepted && !hasActiveErrors && !isSubmitting
   }
 
   const handleResendVerification = async () => {
-    // Vérifications de base
     if (!formData.email || !formData.email.trim()) {
       setResendError("البريد الإلكتروني مطلوب لإعادة الإرسال")
       return
@@ -231,14 +224,12 @@ export default function RegistrationCouturiere() {
       setResendError("البريد الإلكتروني غير صحيح")
       return
     }
-    // Vérifier le délai entre les envois (1 minute)
     const now = new Date().getTime()
     if (lastResendTime && now - lastResendTime < 60000) {
       const remainingTime = Math.ceil((60000 - (now - lastResendTime)) / 1000)
       setResendError(`يرجى الانتظار ${remainingTime} ثانية قبل إعادة الإرسال`)
       return
     }
-    // Limiter à 3 tentatives
     if (resendCount >= 3) {
       setResendError("تم تجاوز الحد الأقصى لعدد المحاولات. يرجى المحاولة لاحقاً")
       return
@@ -265,7 +256,6 @@ export default function RegistrationCouturiere() {
       setResendSuccess("تم إرسال رابط التحقق مرة أخرى بنجاح!")
       setResendCount((prev) => prev + 1)
       setLastResendTime(new Date().getTime())
-      // Effacer le message après 5 secondes
       setTimeout(() => {
         setResendSuccess("")
       }, 5000)
@@ -311,7 +301,6 @@ export default function RegistrationCouturiere() {
     const fieldsToValidate = ["fullName", "email", "password", "confirmPassword", "phone", "address"]
     let currentErrors = {}
 
-    // Validate all form fields
     fieldsToValidate.forEach((field) => {
       const error = validateFieldSync(field, formData[field], formData)
       if (error) {
@@ -319,21 +308,19 @@ export default function RegistrationCouturiere() {
       }
     })
 
-    // Validate terms and conditions
     if (!acceptTerms) {
       currentErrors.terms = "يجب الموافقة على الشروط والأحكام"
     } else {
-      delete currentErrors.terms // Clear if accepted
+      delete currentErrors.terms
     }
 
-    // Validate files using the centralized logic
     let fileError = null;
     if (files.length === 0) {
       fileError = "يجب إرفاق ملف واحد على الأقل لإثبات المهارات";
     } else if (files.length > 5) {
       fileError = "لا يمكنك تحميل أكثر من 5 ملفات.";
     } else {
-      fileError = validateFiles(files); // Validate each file for size/type
+      fileError = validateFiles(files);
     }
     if (fileError) {
       currentErrors.files = fileError;
@@ -341,7 +328,7 @@ export default function RegistrationCouturiere() {
       delete currentErrors.files;
     }
 
-    setErrors(currentErrors) // Set all errors at once
+    setErrors(currentErrors)
 
     const hasErrors = Object.keys(currentErrors).length > 0
 
@@ -352,82 +339,110 @@ export default function RegistrationCouturiere() {
 
     try {
       const data = new FormData()
-      data.append("user.full_name", formData.fullName)
-      data.append("user.email", formData.email)
-      data.append("user.password", formData.password)
-      data.append("address", formData.address)
-      data.append("phone_number", formData.phone)
-      data.append("agreed_to_policy", acceptTerms)
-      files.forEach((file, index) => {
-        data.append(`documents[${index}]`, file)
-      })
-
-      files.forEach((file) => {
+      data.append("user[full_name]", formData.fullName)
+    data.append("user[email]", formData.email)
+    data.append("user[password]", formData.password)
+    data.append("address", formData.address)
+    data.append("phone_number", formData.phone)
+    data.append("agreed_to_policy", acceptTerms)
+       files.forEach((file) => {
       data.append("documents", file)  // Même clé pour tous les fichiers
     })
       console.log("Envoi des données...")
 
-       const response = await axios.post("https://api.kadi-inv.store/api/signup-couturiere/", data, {
+     const response = await axios.post("https://api.kadi-inv.store/api/signup-couturiere/", data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
       timeout: 60000, // Timeout augmenté
     })
-     console.log("Réponse reçue:", response.data)
+          console.log("Réponse reçue:", response.data)
+
+
       setSubmitSuccess("تم إنشاء الحساب بنجاح! تحقق من بريدك الإلكتروني")
-      // Réinitialiser les compteurs de renvoi après succès
       setResendCount(0)
       setLastResendTime(null)
-      // setFiles([])
-      // setAcceptTerms(false)
       setErrors({})
-       // Clear all errors on successful submission
-
-
 
     } catch (error) {
-     console.error("Erreur détaillée:", error)
-      if (error.response) {
-        const { status, data } = error.response
-        console.log("Erreurs du backend:", data)
-        switch (status) {
-          case 400:
-            if (data.user && data.user.email) {
-              setErrors((prev) => ({ ...prev, email: "البريد الإلكتروني مستخدم بالفعل. يرجى تسجيل الدخول به أو تغييره لتسجيل حساب جديد."}))
-            } else {
-              setSubmitError("بيانات غير صحيحة. يرجى المراجعة والمحاولة مرة أخرى")
-            }
-            break
-          case 500:
-            setSubmitError("خطأ في الخادم. يرجى المحاولة لاحقاً")
-            break
-          default:
-            setSubmitError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى")
+  console.error("ERREUR COMPLETE:", error)
+  
+  if (error.response) {
+    const { status, data } = error.response
+    console.log("ERREURS DU BACKEND:", data) // ← Affiche les erreurs réelles
+    
+    // Afficher les erreurs de validation spécifiques
+    if (status === 400) {
+      // Afficher les erreurs de validation détaillées
+      if (data.user) {
+        // Erreurs dans l'objet user
+        if (data.user.email) {
+          setErrors((prev) => ({ ...prev, email: data.user.email[0] }))
         }
-      } else if (error.request) { 
-        setSubmitError("لا يمكن الاتصال بالخادم. تحقق من اتصال الإنترنت")
-      } else {
-        setSubmitError("حدث خطأ غير متendu")
+        if (data.user.full_name) {
+          setErrors((prev) => ({ ...prev, fullName: data.user.full_name[0] }))
+        }
+        if (data.user.password) {
+          setErrors((prev) => ({ ...prev, password: data.user.password[0] }))
+        }
       }
-    } finally {
-      setIsSubmitting(false)
+      // Erreurs générales
+      if (data.address) {
+        setErrors((prev) => ({ ...prev, address: data.address[0] }))
+      }
+      if (data.phone_number) {
+        setErrors((prev) => ({ ...prev, phone: data.phone_number[0] }))
+      }
+      if (data.agreed_to_policy) {
+        setErrors((prev) => ({ ...prev, terms: data.agreed_to_policy[0] }))
+      }
+      if (data.documents) {
+        setErrors((prev) => ({ ...prev, files: data.documents[0] }))
+      }
+      
+      // Si pas d'erreurs spécifiques, afficher le message général
+      if (Object.keys(data).length === 0) {
+        setSubmitError("بيانات غير صحيحة. يرجى التحقق من جميع الحقول")
+      } else if (!data.user && !data.address && !data.phone_number && !data.agreed_to_policy && !data.documents) {
+        setSubmitError(data.detail || "بيانات غير صحيحة. يرجى المراجعة والمحاولة مرة أخرى")
+      }
+    } else if (status === 500) {
+      setSubmitError("خطأ في الخادم. يرجى المحاولة لاحقاً")
+    } else {
+      setSubmitError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى")
     }
+  } else if (error.request) { 
+    setSubmitError("لا يمكن الاتصال بالخادم. تحقق من اتصال الإنترنت")
+  } else {
+    setSubmitError("حدث خطأ غير متوقع")
   }
+}
+} 
+
+  const handleBackToLogin = () => {
+    navigate("/login");
+  };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-start bg-[#F4F3EF] px-4 pb-4 pt-8">
-      {/* Header */}
-      <div className="relative mb-4 flex w-full max-w-md items-center justify-center">
-        <h2 className="amiri-bold text-center text-2xl text-[#E5B62B]">تسجيل حساب خياطة</h2>
-        <ArrowLeft onClick={() => navigate(-1)} className="absolute left-4 h-5 w-5 cursor-pointer text-[#374151]" />
-        <div className="fixed right-0 top-4 z-50">
-          <img src="/logo.png" alt="Logo" className="h-auto w-[8rem] max-w-full object-contain" />
-        </div>
+    <div className="login-container">
+      {/* Logo centré avec espace en dessous */}
+      <div className="login-logo">
+        <img src={logo} alt="Logo" />
       </div>
-      {/* White Card */}
-      <div className="shadow-md flex h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-b-2xl rounded-t-3xl bg-white">
-        <div className="flex-1 overflow-y-auto px-6 py-6" dir="rtl">
-          <form onSubmit={handleSubmit} className="space-y-4">
+      
+      {/* White Card avec titre et icône à l'intérieur */}
+      <div className="login-card">
+        <div className="login-card-content">
+          {/* Header avec bouton de retour et titre à l'intérieur de la carte */}
+          <div className="login-header">
+            <ArrowLeft 
+              className="login-back-button" 
+              onClick={handleBackToLogin}
+            />
+            <h2 className="login-title">تسجيل حساب خياطة</h2>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="login-form">
             <InputField
               label="الاسم الكامل:"
               placeholder="ادخل الاسم الكامل"
@@ -439,7 +454,7 @@ export default function RegistrationCouturiere() {
               label="البريد الإلكتروني:"
               type="email"
               placeholder="example@gmail.com"
-              value={formData.email}
+              value={formData.email.toLowerCase()}
               onChange={(val) => handleInputChange("email", val)}
               error={errors.email}
             />
@@ -476,6 +491,7 @@ export default function RegistrationCouturiere() {
               onChange={(val) => handleInputChange("address", val)}
               error={errors.address}
             />
+            
             {/* File Upload Section */}
             <div className="space-y-3">
               <input
@@ -517,6 +533,7 @@ export default function RegistrationCouturiere() {
               )}
               {errors.files && <p className="mt-1 text-center text-xs text-red-500">{errors.files}</p>}
             </div>
+            
             <div className="mt-4 flex items-center gap-2">
               <Checkbox
                 checked={acceptTerms}
@@ -538,23 +555,24 @@ export default function RegistrationCouturiere() {
               </label>
             </div>
             {errors.terms && <p className="text-center text-xs text-red-500">{errors.terms}</p>}
-            <Button
+            
+            <button
               type="submit"
               disabled={!isFormValid()}
-              className="mt-4 h-12 w-full rounded-full font-medium text-white disabled:opacity-50"
-              style={{ backgroundColor: "#E5B62B" }}
+              className="login-submit-button"
             >
               {isSubmitting ? "جاري الإنشاء..." : "إنشاء حساب"}
-            </Button>
-            <p className="mt-4 text-center text-sm text-[#374151]">
-              هل لديك حساب بالفعل؟{" "}
-              <span className="cursor-pointer text-[#4A66BD] underline">
-                  <Link to="/login">
-                تسجيل الدخول
+            </button>
+
+            <div className="login-forgot-password">
+              <span className="login-forgot-link">
+                <Link to="/login">
+                  هل لديك حساب بالفعل؟ تسجيل الدخول
                 </Link>
               </span>
-            </p>
+            </div>
           </form>
+          
           {/* رسائل النجاح والخطأ العامة */}
           {submitSuccess && (
             <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4 text-center">
