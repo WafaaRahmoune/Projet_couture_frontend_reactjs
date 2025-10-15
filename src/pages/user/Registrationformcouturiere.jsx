@@ -417,7 +417,7 @@ export default function RegistrationCouturiere() {
     setSubmitError("حدث خطأ غير متوقع")
   }
 }
-
+} 
 
   const handleBackToLogin = () => {
     navigate("/login");
