@@ -1,8 +1,10 @@
 import React from "react"
 
-function InputField({ label, type = "text", placeholder, value, onChange, error }) {
+function InputField({ label, type = "text", placeholder, value, onChange, error "data-error": dataError }) {
     return (
-      <div className="space-y-2 text-right">
+      <div className="space-y-2 text-right"
+          data-error={dataError}
+          >
         <label className="text-sm text-[#374151] font-[Cairo] font-semibold">{label}</label>
   
         <div className={`
