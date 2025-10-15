@@ -364,7 +364,7 @@ export default function RegistrationCouturiere() {
       setLastResendTime(null)
       setErrors({})
 
-    } } catch (error) {
+    } catch (error) {
   console.error("ERREUR COMPLETE:", error)
   
   if (error.response) {
