@@ -40,6 +40,24 @@ export default function RegistrationCouturiere() {
     }
   }, [])
 
+  const scrollToFirstError = () => {
+  // Attendre un peu pour que le DOM se mette à jour
+  setTimeout(() => {
+    const firstErrorElement = document.querySelector('[data-error="true"]');
+    if (firstErrorElement) {
+      firstErrorElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+      // Focus sur le premier champ en erreur
+      const input = firstErrorElement.querySelector('input');
+      if (input) {
+        input.focus();
+      }
+    }
+  }, 100);
+};
+
   const validateFieldSync = (field, value, currentFormData) => {
     let error = null
     switch (field) {
@@ -142,6 +160,10 @@ export default function RegistrationCouturiere() {
       }
 
       setErrors(newErrors)
+       // Réactiver le bouton de soumission si des modifications sont apportées
+    if (isSubmitting) {
+      setIsSubmitting(false)
+    }
       return newFormData
     })
   }
@@ -334,6 +356,7 @@ export default function RegistrationCouturiere() {
 
     if (hasErrors) {
       setIsSubmitting(false)
+      scrollToFirstError()
       return
     }
 
