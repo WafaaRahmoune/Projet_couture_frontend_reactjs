@@ -613,7 +613,7 @@ export default function RegistrationCouturiere() {
               {errors.files && <p className="mt-1 text-center text-xs text-red-500">{errors.files}</p>}
             </div>
             
-            <div className="mt-4 flex items-center gap-2" data-error={!!errors.terms} // ← Ajoutez cette ligne>
+            <div className="mt-4 flex items-center gap-2" data-error={!!errors.terms} >
               <Checkbox
                 checked={acceptTerms}
                 onCheckedChange={(c) => {
