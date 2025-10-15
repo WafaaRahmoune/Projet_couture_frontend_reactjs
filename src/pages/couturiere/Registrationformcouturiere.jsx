@@ -362,12 +362,18 @@ export default function RegistrationCouturiere() {
         data.append(`documents[${index}]`, file)
       })
 
-      const response = await axios.post("https://api.kadi-inv.store/api/signup-couturiere/", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      files.forEach((file) => {
+      data.append("documents", file)  // Même clé pour tous les fichiers
+    })
+      console.log("Envoi des données...")
 
+       const response = await axios.post("https://api.kadi-inv.store/api/signup-couturiere/", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      timeout: 60000, // Timeout augmenté
+    })
+     console.log("Réponse reçue:", response.data)
       setSubmitSuccess("تم إنشاء الحساب بنجاح! تحقق من بريدك الإلكتروني")
       // Réinitialiser les compteurs de renvoi après succès
       setResendCount(0)
@@ -380,9 +386,10 @@ export default function RegistrationCouturiere() {
 
 
     } catch (error) {
-      console.error(error)
+     console.error("Erreur détaillée:", error)
       if (error.response) {
         const { status, data } = error.response
+        console.log("Erreurs du backend:", data)
         switch (status) {
           case 400:
             if (data.user && data.user.email) {
