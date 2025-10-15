@@ -431,11 +431,6 @@ export default function RegistrationCouturiere() {
       }
       return translations[errorMessage] || errorMessage
     }
-
-     setTimeout(() => {
-      scrollToFirstError();
-    }, 100);
-  }
     
     // Afficher les erreurs de validation spécifiques
     if (status === 400) {
@@ -489,7 +484,12 @@ export default function RegistrationCouturiere() {
   } else {
     setSubmitError("حدث خطأ غير متوقع")
   }
+       setTimeout(() => {
+      scrollToFirstError();
+    }, 100);
+  }
 }
+    
 }
 
   const handleBackToLogin = () => {
