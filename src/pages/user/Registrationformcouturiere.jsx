@@ -364,12 +364,28 @@ export default function RegistrationCouturiere() {
       setLastResendTime(null)
       setErrors({})
 
-    } catch (error) {
+    } } catch (error) {
   console.error("ERREUR COMPLETE:", error)
   
   if (error.response) {
     const { status, data } = error.response
-    console.log("ERREURS DU BACKEND:", data) // ← Affiche les erreurs réelles
+    console.log("ERREURS DU BACKEND:", data)
+    
+    // Fonction de traduction des erreurs
+    const translateError = (errorMessage) => {
+      const translations = {
+        'Un objet utilisateur avec ce champ email existe déjà.': 'البريد الإلكتروني مستخدم بالفعل. يرجى تسجيل الدخول به أو تغييره لتسجيل حساب جديد.',
+        'Ce champ est obligatoire.': 'هذا الحقل مطلوب.',
+        'Saisissez une adresse e-mail valable.': 'يرجى إدخال بريد إلكتروني صحيح.',
+        'Ce mot de passe est trop court. Il doit contenir au minimum 8 caractères.': 'كلمة المرور قصيرة جداً. يجب أن تحتوي على 8 أحرف على الأقل.',
+        'Ce mot de passe est trop courant.': 'كلمة المرور شائعة جداً.',
+        'Les deux mots de passe ne correspondent pas.': 'كلمات المرور غير متطابقة.',
+        'La saisie doit être au format E.164.': 'رقم الهاتف غير صحيح.',
+        'Vous devez accepter les conditions d\'utilisation.': 'يجب الموافقة على الشروط والأحكام.',
+        'Maximum 5 fichiers autorisés.': 'لا يمكنك تحميل أكثر من 5 ملفات.'
+      }
+      return translations[errorMessage] || errorMessage
+    }
     
     // Afficher les erreurs de validation spécifiques
     if (status === 400) {
@@ -377,27 +393,34 @@ export default function RegistrationCouturiere() {
       if (data.user) {
         // Erreurs dans l'objet user
         if (data.user.email) {
-          setErrors((prev) => ({ ...prev, email: data.user.email[0] }))
+          const errorMessage = Array.isArray(data.user.email) ? data.user.email[0] : data.user.email
+          setErrors((prev) => ({ ...prev, email: translateError(errorMessage) }))
         }
         if (data.user.full_name) {
-          setErrors((prev) => ({ ...prev, fullName: data.user.full_name[0] }))
+          const errorMessage = Array.isArray(data.user.full_name) ? data.user.full_name[0] : data.user.full_name
+          setErrors((prev) => ({ ...prev, fullName: translateError(errorMessage) }))
         }
         if (data.user.password) {
-          setErrors((prev) => ({ ...prev, password: data.user.password[0] }))
+          const errorMessage = Array.isArray(data.user.password) ? data.user.password[0] : data.user.password
+          setErrors((prev) => ({ ...prev, password: translateError(errorMessage) }))
         }
       }
       // Erreurs générales
       if (data.address) {
-        setErrors((prev) => ({ ...prev, address: data.address[0] }))
+        const errorMessage = Array.isArray(data.address) ? data.address[0] : data.address
+        setErrors((prev) => ({ ...prev, address: translateError(errorMessage) }))
       }
       if (data.phone_number) {
-        setErrors((prev) => ({ ...prev, phone: data.phone_number[0] }))
+        const errorMessage = Array.isArray(data.phone_number) ? data.phone_number[0] : data.phone_number
+        setErrors((prev) => ({ ...prev, phone: translateError(errorMessage) }))
       }
       if (data.agreed_to_policy) {
-        setErrors((prev) => ({ ...prev, terms: data.agreed_to_policy[0] }))
+        const errorMessage = Array.isArray(data.agreed_to_policy) ? data.agreed_to_policy[0] : data.agreed_to_policy
+        setErrors((prev) => ({ ...prev, terms: translateError(errorMessage) }))
       }
       if (data.documents) {
-        setErrors((prev) => ({ ...prev, files: data.documents[0] }))
+        const errorMessage = Array.isArray(data.documents) ? data.documents[0] : data.documents
+        setErrors((prev) => ({ ...prev, files: translateError(errorMessage) }))
       }
       
       // Si pas d'erreurs spécifiques, afficher le message général
@@ -417,7 +440,7 @@ export default function RegistrationCouturiere() {
     setSubmitError("حدث خطأ غير متوقع")
   }
 }
-} 
+}
 
   const handleBackToLogin = () => {
     navigate("/login");
