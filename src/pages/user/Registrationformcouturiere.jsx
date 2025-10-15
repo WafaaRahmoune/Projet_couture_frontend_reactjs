@@ -365,34 +365,58 @@ export default function RegistrationCouturiere() {
       setErrors({})
 
     } catch (error) {
-     console.error("Erreur détaillée:", error)
-
-     
-      if (error.response) {
-        const { status, data } = error.response
-        switch (status) {
-          case 400:
-            if (data.user && data.user.email) {
-              setErrors((prev) => ({ ...prev, email: "البريد الإلكتروني مستخدم بالفعل. يرجى تسجيل الدخول به أو تغييره لتسجيل حساب جديد."}))
-            } else {
-              setSubmitError("بيانات غير صحيحة. يرجى المراجعة والمحاولة مرة أخرى")
-            }
-            break
-          case 500:
-            setSubmitError("خطأ في الخادم. يرجى المحاولة لاحقاً")
-            break
-          default:
-            setSubmitError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى")
+  console.error("ERREUR COMPLETE:", error)
+  
+  if (error.response) {
+    const { status, data } = error.response
+    console.log("ERREURS DU BACKEND:", data) // ← Affiche les erreurs réelles
+    
+    // Afficher les erreurs de validation spécifiques
+    if (status === 400) {
+      // Afficher les erreurs de validation détaillées
+      if (data.user) {
+        // Erreurs dans l'objet user
+        if (data.user.email) {
+          setErrors((prev) => ({ ...prev, email: data.user.email[0] }))
         }
-      } else if (error.request) { 
-        setSubmitError("لا يمكن الاتصال بالخادم. تحقق من اتصال الإنترنت")
-      } else {
-        setSubmitError("حدث خطأ غير متendu")
+        if (data.user.full_name) {
+          setErrors((prev) => ({ ...prev, fullName: data.user.full_name[0] }))
+        }
+        if (data.user.password) {
+          setErrors((prev) => ({ ...prev, password: data.user.password[0] }))
+        }
       }
-    } finally {
-      setIsSubmitting(false)
+      // Erreurs générales
+      if (data.address) {
+        setErrors((prev) => ({ ...prev, address: data.address[0] }))
+      }
+      if (data.phone_number) {
+        setErrors((prev) => ({ ...prev, phone: data.phone_number[0] }))
+      }
+      if (data.agreed_to_policy) {
+        setErrors((prev) => ({ ...prev, terms: data.agreed_to_policy[0] }))
+      }
+      if (data.documents) {
+        setErrors((prev) => ({ ...prev, files: data.documents[0] }))
+      }
+      
+      // Si pas d'erreurs spécifiques, afficher le message général
+      if (Object.keys(data).length === 0) {
+        setSubmitError("بيانات غير صحيحة. يرجى التحقق من جميع الحقول")
+      } else if (!data.user && !data.address && !data.phone_number && !data.agreed_to_policy && !data.documents) {
+        setSubmitError(data.detail || "بيانات غير صحيحة. يرجى المراجعة والمحاولة مرة أخرى")
+      }
+    } else if (status === 500) {
+      setSubmitError("خطأ في الخادم. يرجى المحاولة لاحقاً")
+    } else {
+      setSubmitError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى")
     }
+  } else if (error.request) { 
+    setSubmitError("لا يمكن الاتصال بالخادم. تحقق من اتصال الإنترنت")
+  } else {
+    setSubmitError("حدث خطأ غير متوقع")
   }
+}
 
   const handleBackToLogin = () => {
     navigate("/login");
