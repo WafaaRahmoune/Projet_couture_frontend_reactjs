@@ -43,15 +43,30 @@ export default function RegistrationCouturiere() {
   const scrollToFirstError = () => {
   // Attendre un peu pour que le DOM se mette à jour
   setTimeout(() => {
-    const firstErrorElement = document.querySelector('[data-error="true"]');
+    let firstErrorElement = null;
+    
+    // Chercher d'abord les champs de formulaire avec erreur
+    firstErrorElement = document.querySelector('[data-error="true"]');
+    
+    // Si pas de champ de formulaire en erreur, chercher les erreurs de fichiers
+    if (!firstErrorElement && errors.files) {
+      firstErrorElement = document.querySelector('#folder-upload').parentElement;
+    }
+    
+    // Si pas d'erreur de fichiers, chercher les erreurs de termes
+    if (!firstErrorElement && errors.terms) {
+      firstErrorElement = document.querySelector('[class*="Checkbox"]')?.closest('div');
+    }
+    
     if (firstErrorElement) {
       firstErrorElement.scrollIntoView({ 
         behavior: 'smooth', 
         block: 'center' 
       });
-      // Focus sur le premier champ en erreur
+      
+      // Focus sur le premier champ en erreur si c'est un input
       const input = firstErrorElement.querySelector('input');
-      if (input) {
+      if (input && input.type !== 'file') {
         input.focus();
       }
     }
@@ -511,6 +526,8 @@ export default function RegistrationCouturiere() {
               value={formData.email.toLowerCase()}
               onChange={(val) => handleInputChange("email", val)}
               error={errors.email}
+              data-error={!!errors.email} // ← Ajoutez cette ligne
+
             />
             <PasswordField
               label="كلمة المرور:"
@@ -530,6 +547,8 @@ export default function RegistrationCouturiere() {
               toggleShow={() => setShowConfirm((prev) => !prev)}
               onChange={(val) => handleInputChange("confirmPassword", val)}
               error={errors.confirmPassword}
+              data-error={!!errors.confirmPassword} // ← Ajoutez cette ligne
+
             />
             <InputField
               label="رقم الهاتف:"
@@ -538,6 +557,8 @@ export default function RegistrationCouturiere() {
               value={formData.phone}
               onChange={(val) => handleInputChange("phone", val)}
               error={errors.phone}
+              data-error={!!errors.phone} // ← Ajoutez cette ligne
+
             />
             <InputField
               label="عنوان الاقامة:"
@@ -545,10 +566,13 @@ export default function RegistrationCouturiere() {
               value={formData.address}
               onChange={(val) => handleInputChange("address", val)}
               error={errors.address}
+              data-error={!!errors.address} // ← Ajoutez cette ligne
+
             />
             
             {/* File Upload Section */}
-            <div className="space-y-3">
+            <div className="space-y-3"    data-error={!!errors.files} // ← Ajoutez cette ligne
+>
               <input
                 type="file"
                 id="folder-upload"
@@ -589,7 +613,7 @@ export default function RegistrationCouturiere() {
               {errors.files && <p className="mt-1 text-center text-xs text-red-500">{errors.files}</p>}
             </div>
             
-            <div className="mt-4 flex items-center gap-2">
+            <div className="mt-4 flex items-center gap-2" data-error={!!errors.terms} // ← Ajoutez cette ligne>
               <Checkbox
                 checked={acceptTerms}
                 onCheckedChange={(c) => {
