@@ -47,7 +47,7 @@ import RefuseCouturierePage from "./pages/user/RefuseCouturierePage";
 import NotActiveCouturiere from "./pages/user/NotActiveCouturiere";
 
 // Import des pages de ta camarade
-import PolicyCouturiere from "./pages/couturiere/Policy.jsx";
+import PolicyCouturiere from "./pages/couturiere/Policy";
 import Demandes from "./pages/couturiere/Demandes";
 import AffiliateCodePromoDashboard from "./pages/affiliate/Mescodepromo";
 import MyAccount from "./pages/couturiere/Moncompte";
