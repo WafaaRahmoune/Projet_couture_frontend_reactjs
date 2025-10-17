@@ -54,7 +54,8 @@ export default function DemandePublicationModel() {
           variants: model.variants || [],
           description: model.description || "" // Ajouter la description si disponible
         }));
-        
+        console.log('URLs images transformées:', transformedModels.map(m => m.images));
+        console.log('Données brutes de l\'API:', response.data.models);
         setModels(transformedModels);
       } else {
         setError("Erreur lors de la récupération des données");
