@@ -60,7 +60,7 @@ export default function FooterSection() {
       <div className="footer-container">
         {/* Bloc 1 */}
         <div className="footer-brand">
-          <h3 className="footer-title">منصة شاملة لربط عالم الخياطة والأزياء</h3>
+          <h3 className="footer-title">->منصة للاستثمار و العمل حر في مجال خياطة الألبسة الجاهزة</h3>
           <div className="footer-logo">
             <img src={logo} alt="Logo Kadi" />
           </div>
